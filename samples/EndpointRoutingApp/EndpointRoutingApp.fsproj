@@ -10,11 +10,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Giraffe" Version="6.4.1-alpha-3" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
   </ItemGroup>
   
   <ItemGroup>
+    <ProjectReference Include="..\..\src\Giraffe\src\Giraffe\Giraffe.fsproj" />
     <ProjectReference Include="../../src/Giraffe.OpenApi/Giraffe.OpenApi.fsproj" />
   </ItemGroup>
 </Project>

@@ -1,13 +1,13 @@
 ﻿open System
 open System.IO
-open Giraffe
-open Giraffe.EndpointRouting
-open Giraffe.OpenApi
 open Microsoft.AspNetCore.Builder
 open Microsoft.AspNetCore.Http
 open Microsoft.Extensions.DependencyInjection
 open Microsoft.Extensions.Hosting
 open Microsoft.OpenApi.Models
+open Giraffe
+open Giraffe.EndpointRouting
+open Giraffe.OpenApi
 
 /// <summary>
 /// Fsharp Message type 
@@ -27,7 +27,7 @@ let handler2 (firstName: string, age: int) : HttpHandler =
     fun (_: HttpFunc) (ctx: HttpContext) ->
         sprintf "Hello %s, you are %i years old." firstName age |> ctx.WriteTextAsync
 
-let endpoints =
+let endpoints = [
       GET [
             route "/hello" (json {Hello = "Hello from Giraffe"})
             |> configureEndpoint _.WithTags("helloGiraffe")
@@ -38,9 +38,10 @@ let endpoints =
             routef "/%s/%i" handler2
             |> configureEndpoint _.WithTags("handler2")
             |> configureEndpoint _.WithSummary("Fetches a response from handler2")
-            |> configureEndpoint _.WithDescription("Will .")
+            |> configureEndpoint _.WithDescription("Will return a Hello from Handler 2.")
             |> addOpenApiSimple<(string * int), string>
       ]
+]
       
 let notFoundHandler = "Not Found" |> text |> RequestErrors.notFound
 

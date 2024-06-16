@@ -10,8 +10,11 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Giraffe" Version="6.4.1-alpha-3" />
         <PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="All"/>
         <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.1" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\Giraffe\src\Giraffe\Giraffe.fsproj" />
     </ItemGroup>
 </Project>
