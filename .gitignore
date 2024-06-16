@@ -1,0 +1,11 @@
+**/bin
+**/obj
+
+.fake
+.ionide
+.idea
+*.user
+.vscode
+.direnv
+.DS_Store
+
