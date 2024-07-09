@@ -5,9 +5,7 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Giraffe.OpenApi", "src\Giraffe.OpenApi\Giraffe.OpenApi.fsproj", "{7ED34693-3702-484F-8383-0035C1AAA7AB}"
 EndProject
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "EndpointRoutingApp", "samples\EndpointRoutingApp\EndpointRoutingApp.fsproj", "{7AF4E309-FACB-4FE7-A104-6F096FA10E5C}"
-EndProject
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Giraffe", "src\Giraffe\src\Giraffe\Giraffe.fsproj", "{7C89F16B-A810-48FE-91B6-7444E810FD9D}"
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "SampleApp", "sample-project\SampleApp.fsproj", "{7AF4E309-FACB-4FE7-A104-6F096FA10E5C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

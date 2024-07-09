@@ -1,4 +1,0 @@
-[submodule "src/Giraffe"]
-	path = src/Giraffe
-	url = https://github.com/mrtz-j/Giraffe.git
-	branch = configureEndpoint

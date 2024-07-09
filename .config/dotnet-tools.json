@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "isRoot": true,
+  "tools": {
+    "fsharp-analyzers": {
+      "version": "0.26.0",
+      "commands": [
+        "fsharp-analyzers"
+      ],
+      "rollForward": false
+    },
+    "fantomas": {
+      "version": "6.3.9",
+      "commands": [
+        "fantomas"
+      ],
+      "rollForward": false
+    }
+  }
+}

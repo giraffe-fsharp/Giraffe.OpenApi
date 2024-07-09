@@ -1,0 +1,41 @@
+root = true
+
+[*]
+charset = utf-8
+indent_size = 4
+indent_style = space
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+# ReSharper properties
+resharper_xml_indent_size = 2
+resharper_xml_max_line_length = 100
+resharper_xml_tab_width = 2
+
+[*.fsproj]
+indent_size = 2
+
+[*.html]
+indent_size = 2
+
+[*.json]
+indent_size = 2
+
+[*.{fs,fsx}]
+fsharp_alternative_long_member_definitions = true
+fsharp_blank_lines_around_nested_multiline_expressions = false
+fsharp_keep_max_number_of_blank_lines = 1
+fsharp_max_dot_get_expression_width = 60
+fsharp_max_function_binding_width = 100
+fsharp_max_infix_operator_expression = 80
+fsharp_max_record_number_of_items = 2
+fsharp_max_record_width = 40
+fsharp_multi_line_lambda_closing_newline = true
+fsharp_multiline_bracket_style = stroustrup
+fsharp_record_multiline_formatter = number_of_items
+fsharp_space_around_delimiter = true
+fsharp_space_before_member = true
+fsharp_space_before_parameter = true
+fsharp_space_before_uppercase_invocation = false
+max_line_length = 100
+

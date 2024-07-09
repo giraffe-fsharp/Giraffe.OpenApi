@@ -1,0 +1,20 @@
+<Project>
+  <PropertyGroup>
+    <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+  </PropertyGroup>
+  <ItemGroup>
+    <!-- Common -->
+    <PackageVersion Include="Giraffe" Version="7.0.0-alpha-001" />
+    <PackageVersion Include="Ionide.KeepAChangelog.Tasks" Version="0.1.8" />
+    <PackageVersion Include="FSharp.Core" Version="8.0.300" />
+    <!-- Giraffe.OpenApi -->
+    <PackageVersion Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="All" />
+    <PackageVersion Include="Microsoft.AspNetCore.OpenApi" Version="8.0.6" />
+    <!-- Sample App -->
+    <PackageVersion Include="Swashbuckle.AspNetCore" Version="6.6.2" />
+    <!-- Analyzers -->
+    <PackageVersion Include="FSharp.Analyzers.Build" Version="0.3.0" />
+    <PackageVersion Include="G-Research.FSharp.Analyzers" Version="0.10.0" />
+    <PackageVersion Include="Ionide.Analyzers" Version="0.11.0" />
+  </ItemGroup>
+</Project>

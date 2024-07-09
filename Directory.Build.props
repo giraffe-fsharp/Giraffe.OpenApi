@@ -1,0 +1,47 @@
+<Project>
+    <PropertyGroup>
+        <!-- Common packaging properties for all packages in this repo -->
+        <Authors>Moritz Jörg</Authors>
+        <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+        <Copyright>Copyright © $([System.DateTime]::UtcNow.Year)</Copyright>
+        <PublishRepositoryUrl>true</PublishRepositoryUrl>
+        <EmbedUntrackedSources>true</EmbedUntrackedSources>
+        <DebugType>embedded</DebugType>
+        <Description>OpenApi support for Giraffe</Description>
+        <RepositoryUrl>https://github.com/mrtz-j/Giraffe.OpenApi</RepositoryUrl>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <PackageProjectUrl>https://github.com/mrtz-j/Giraffe.OpenApi/src/Giraffe.OpenApi</PackageProjectUrl>
+        <RepositoryType>git</RepositoryType>
+        <PackageTags>Giraffe;ASP.NET Core;F#;FSharp;Http;Web;OpenApi</PackageTags>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+        <Version>0.0.1</Version>
+        <PackageVersion>0.0.1</PackageVersion>
+        <PackageReleaseNotes>Initial Version</PackageReleaseNotes>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <DisableImplicitNuGetFallbackFolder>true</DisableImplicitNuGetFallbackFolder>
+        <!-- https://www.gresearch.co.uk/blog/article/improve-nuget-restores-with-static-graph-evaluation/ -->
+        <RestoreUseStaticGraphEvaluation>true</RestoreUseStaticGraphEvaluation>
+        <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
+        <SatelliteResourceLanguages>en</SatelliteResourceLanguages>
+        <ServerGarbageCollection>true</ServerGarbageCollection>
+        <OtherFlags>$(OtherFlags) --test:GraphBasedChecking --test:ParallelOptimization --test:ParallelIlxGen --strict-indentation+</OtherFlags>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="FSharp.Analyzers.Build" PrivateAssets="All">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>build</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="G-Research.FSharp.Analyzers">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>analyzers</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="Ionide.Analyzers">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+        </PackageReference>
+    </ItemGroup>
+</Project>

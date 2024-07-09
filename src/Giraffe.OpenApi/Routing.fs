@@ -1,7 +1,7 @@
 ﻿namespace Giraffe.OpenApi
 
 // Modified for Giraffe, from https://github.com/Lanayx/Oxpecker/blob/develop/src/Oxpecker.OpenApi/Routing.fs.
-// 
+//
 // MIT License
 //
 // Copyright (c) 2023 Vladimir Shchur
@@ -48,32 +48,32 @@ module Routing =
             | Some "guid" -> OpenApiSchema(Type = "string", Format = "uuid")
             | _ -> OpenApiSchema(Type = "string")
         | _ -> OpenApiSchema(Type = "string")
-    
-    let routef
-        (path         : PrintfFormat<_,_,_,_, 'T>)
-        (routeHandler : 'T -> HttpHandler) : Endpoint =
+
+    let routef (path: PrintfFormat<_, _, _, _, 'T>) (routeHandler: 'T -> HttpHandler) : Endpoint =
         let template, mappings = RouteTemplateBuilder.convertToRouteTemplate path
-        let boxedHandler (o : obj) =
+        let boxedHandler (o: obj) =
             let t = o :?> 'T
             routeHandler t
-            
+
         let configureEndpoint =
             fun (endpoint: IEndpointConventionBuilder) ->
                 endpoint.WithOpenApi(fun (operation: OpenApiOperation) ->
                     operation.Parameters <-
                         ResizeArray(
                             mappings
-                            |> List.map(fun (name, format) ->
+                            |> List.map (fun (name, format) ->
                                 OpenApiParameter(
                                     Name = name,
                                     In = ParameterLocation.Path,
                                     Required = true,
                                     Style = ParameterStyle.Simple,
                                     Schema = getSchema format None
-                                ))
+                                )
+                            )
                         )
-                    operation)
-                    
+                    operation
+                )
+
         TemplateEndpoint(HttpVerb.NotSpecified, template, mappings, boxedHandler, configureEndpoint)
 
     let addOpenApi (config: OpenApiConfig) = configureEndpoint config.Build

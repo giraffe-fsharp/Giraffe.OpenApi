@@ -1,0 +1,18 @@
+<Project>
+    <ItemGroup>
+        <ProjectsToAnalyze Include="src/Giraffe.OpenApi/Giraffe.OpenApi.fsproj" Exclude="sample-project/SampleApp.fsproj" />
+    </ItemGroup>
+
+    <Target Name="AnalyzeSolution">
+        <PropertyGroup>
+            <CodeRoot>$(SolutionDir)</CodeRoot>
+        </PropertyGroup>
+        <RemoveDir Directories="$(SolutionDir)/reports" />
+        <MSBuild
+            Projects="@(ProjectsToAnalyze)"
+            Targets="AnalyzeFSharpProject"
+            Properties="CodeRoot=$(CodeRoot)"
+            ContinueOnError="true"
+        />
+    </Target>
+</Project>

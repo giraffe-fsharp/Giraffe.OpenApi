@@ -1,20 +1,18 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-    <PropertyGroup>
-        <TargetFramework>net8.0</TargetFramework>
-        <GenerateDocumentationFile>true</GenerateDocumentationFile>
-    </PropertyGroup>
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <IsPackable>True</IsPackable>
+  </PropertyGroup>
 
-    <ItemGroup>
-        <Compile Include="Configuration.fs" />
-        <Compile Include="Routing.fs" />
-    </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Configuration.fs"/>
+    <Compile Include="Routing.fs"/>
+  </ItemGroup>
 
-    <ItemGroup>
-        <PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="All"/>
-        <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.6" />
-    </ItemGroup>
-
-    <ItemGroup>
-        <ProjectReference Include="..\Giraffe\src\Giraffe\Giraffe.fsproj" />
-    </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Giraffe" />
+    <PackageReference Include="Microsoft.SourceLink.GitHub"/>
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi"/>
+  </ItemGroup>
 </Project>
