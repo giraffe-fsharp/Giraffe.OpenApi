@@ -15,6 +15,8 @@ An extension for the [Giraffe](https://github.com/giraffe-fsharp/Giraffe) Web Ap
   - [Integration](#integration)
   - [addOpenApi](#addopenapi)
   - [addOpenApiSimple](#addopenapisimple)
+  - [configureEndpoint](#configureendpoint)
+- [License](#license)
 
 ## About
 
@@ -30,7 +32,7 @@ Add the `Giraffe.OpenApi` NuGet package to your project:
 dotnet add package Giraffe.OpenApi
 ```
 
-Two usages:
+Two use cases:
 
 ```fsharp
 open Giraffe
@@ -68,11 +70,9 @@ let endpoints = [
 Since `Giraffe.OpenApi` works on top of `Microsoft.AspNetCore.OpenApi` and `Swashbuckle.AspNetCore` packages, you need to do [standard steps](https://learn.microsoft.com/en-us/aspnet/core/fundamentals/minimal-apis/openapi):
 
 ```fsharp
-
 let configureApp (appBuilder: IApplicationBuilder) =
     appBuilder
         .UseRouting()
-        .Use(errorHandler)
         .UseSwagger() // For generating OpenApi spec
         .UseSwaggerUI() // For viewing Swagger UI
         .UseGiraffe(endpoints)
@@ -103,6 +103,7 @@ type OpenApiConfig (?requestBody : RequestBody,
 ```
 
 Response body schema will be inferred from the types passed to `requestBody` and `responseBodies` parameters. Each `ResponseBody` object in sequence must have different status code.
+
 `configureOperation` parameter is a function that allows you to do very low-level modifications the `OpenApiOperation` object.
 
 ### addOpenApiSimple
@@ -114,3 +115,23 @@ let addOpenApiSimple<'Req, 'Res> = ...
 ```
 
 If your handler doesn't accept any input, you can pass `unit` as a request type (works for response as well).
+
+### configureEndpoint
+
+The two methods above return `Endpoint` object, which can be further configured using `configureEndpoint` method provided by [Giraffe](https://github.com/giraffe-fsharp/Giraffe). It accepts `Endpoint` object and returns the same object, so you can chain multiple calls.
+
+```fsharp
+let endpoints = [
+    GET [
+        route "/hello" (text "Hello, World!")
+        |> configureEndpoint _.WithName("HelloWorld")
+        |> configureEndpoint _.WithDescription("Simple hello world endpoint")
+        |> configureEndpoint _.WithSummary("Hello world")
+        |> addOpenApiSimple<unit, string>
+    ]
+]
+```
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
