@@ -90,4 +90,4 @@ module Routing =
                 typeof<FakeFunc<'Req, 'Res>>
                     .GetMethod(methodName, BindingFlags.Instance ||| BindingFlags.NonPublic)
             )
-                .WithOpenApi()
+            .WithOpenApi()

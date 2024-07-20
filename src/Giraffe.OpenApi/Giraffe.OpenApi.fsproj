@@ -1,11 +1,33 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <OutputType>Exe</OutputType>
     <TargetFramework>net8.0</TargetFramework>
-    <IsPackable>True</IsPackable>
+    <PackageId>Giraffe.OpenApi</PackageId>
+    <Title>Giraffe.OpenApi</Title>
+    <RootNamespace>Giraffe.OpenApi</RootNamespace>
+    <AssemblyName>Giraffe.OpenApi</AssemblyName>
+    <Description>OpenApi support for Giraffe</Description>
+    <RepositoryUrl>https://github.com/mrtz-j/Giraffe.OpenApi</RepositoryUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/mrtz-j/Giraffe.OpenApi/src/Giraffe.OpenApi</PackageProjectUrl>
+    <PackageIcon>giraffe-64.png</PackageIcon>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>Giraffe;ASP.NET Core;F#;FSharp;Http;Web;OpenApi</PackageTags>
+    <Authors>Moritz Jörg, F# Community</Authors>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <Version>0.0.1</Version>
+    <PackageVersion>0.0.1</PackageVersion>
+    <PackageReleaseNotes>Initial Version</PackageReleaseNotes>
+    <Copyright>Copyright © $([System.DateTime]::UtcNow.Year)</Copyright>
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="../../giraffe-64.png" Pack="true" PackagePath="\" />
+    <None Include="../../README.md" Pack="true" PackagePath="\" />
     <Compile Include="Configuration.fs"/>
     <Compile Include="Routing.fs"/>
   </ItemGroup>
