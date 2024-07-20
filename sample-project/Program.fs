@@ -41,13 +41,19 @@ let endpoints = [
     ]
     POST [
         route "/message" (text "Message posted!")
-            |> configureEndpoint _.WithSummary("Posts a message")
-            |> configureEndpoint _.WithDescription("Will return a message posted")
-            |> addOpenApi (OpenApiConfig(
+        |> configureEndpoint _.WithSummary("Posts a message")
+        |> configureEndpoint _.WithDescription("Will return a message posted")
+        |> addOpenApi (
+            OpenApiConfig(
                 requestBody = RequestBody(typeof<FsharpMessage>),
                 responseBodies = [| ResponseBody(typeof<string>) |],
-                configureOperation = (fun o -> o.OperationId <- "PostMessage"; o)
-            ))
+                configureOperation =
+                    (fun o ->
+                        o.OperationId <- "PostMessage"
+                        o
+                    )
+            )
+        )
     ]
 ]
 

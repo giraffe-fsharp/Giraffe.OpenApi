@@ -19,7 +19,7 @@ pipeline "Build" {
             async {
                 let deleteIfExists folder =
                     if Directory.Exists folder then
-                        Directory.Delete (folder, true)
+                        Directory.Delete(folder, true)
 
                 deleteIfExists packageOutput
                 deleteIfExists (__SOURCE_DIRECTORY__ </> "output")
@@ -60,11 +60,11 @@ pipeline "Analyze" {
     runIfOnlySpecified true
 }
 
-
 pipeline "Publish" {
     workingDir __SOURCE_DIRECTORY__
     stage "publish" {
-        run "dotnet publish --nologo -c Release --ucr -p:PublishReadyToRun=true ./src/Giraffe.OpenApi/Giraffe.OpenApi.fsproj"
+        run
+            "dotnet publish --nologo -c Release --ucr -p:PublishReadyToRun=true ./src/Giraffe.OpenApi/Giraffe.OpenApi.fsproj"
     }
     runIfOnlySpecified true
 }
