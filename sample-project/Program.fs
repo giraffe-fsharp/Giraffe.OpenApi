@@ -28,16 +28,32 @@ let handler2 (firstName: string, age: int) (_: HttpFunc) (ctx: HttpContext) =
 let endpoints = [
     GET [
         route "/hello" (json { Hello = "Hello from Giraffe" })
-        |> configureEndpoint _.WithTags("helloGiraffe")
+        |> configureEndpoint _.WithTags("SampleApp")
         |> configureEndpoint _.WithSummary("Fetches a Hello from Giraffe")
         |> configureEndpoint _.WithDescription("Will return a Hello from Giraffe.")
         |> addOpenApiSimple<unit, FsharpMessage>
 
         routef "/%s/%i" handler2
-        |> configureEndpoint _.WithTags("handler2")
+        |> configureEndpoint _.WithTags("SampleApp")
         |> configureEndpoint _.WithSummary("Fetches a response from handler2")
         |> configureEndpoint _.WithDescription("Will return a Hello from Handler 2.")
         |> addOpenApiSimple<string * int, string>
+    ]
+    POST [
+        route "/message" (text "Message posted!")
+        |> configureEndpoint _.WithSummary("Posts a message")
+        |> configureEndpoint _.WithDescription("Will return a message posted")
+        |> addOpenApi (
+            OpenApiConfig(
+                requestBody = RequestBody(typeof<FsharpMessage>),
+                responseBodies = [| ResponseBody(typeof<string>) |],
+                configureOperation =
+                    (fun o ->
+                        o.OperationId <- "PostMessage"
+                        o
+                    )
+            )
+        )
     ]
 ]
 
@@ -52,8 +68,7 @@ let configureApp (appBuilder: IApplicationBuilder) =
         .UseGiraffe(notFoundHandler)
 
 let configureServices (services: IServiceCollection) =
-    // Configure OpenApi
-    let openApiInfo = OpenApiInfo()
+    let openApiInfo = OpenApiInfo() // Configure OpenApi
     openApiInfo.Description <- "Documentation for my API"
     openApiInfo.Title <- "My API"
     openApiInfo.Version <- "v1"
