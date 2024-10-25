@@ -4,7 +4,7 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- Common -->
-    <PackageVersion Include="Giraffe" Version="7.0.0-alpha-001" />
+    <PackageVersion Include="Giraffe" Version="7.0.1" />
     <PackageVersion Include="Ionide.KeepAChangelog.Tasks" Version="0.1.8" />
     <PackageVersion Include="FSharp.Core" Version="8.0.300" />
     <!-- Giraffe.OpenApi -->
@@ -15,6 +15,6 @@
     <!-- Analyzers -->
     <PackageVersion Include="FSharp.Analyzers.Build" Version="0.3.0" />
     <PackageVersion Include="G-Research.FSharp.Analyzers" Version="0.11.0" />
-    <PackageVersion Include="Ionide.Analyzers" Version="0.11.0" />
+    <PackageVersion Include="Ionide.Analyzers" Version="0.12.0" />
   </ItemGroup>
 </Project>
