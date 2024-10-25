@@ -10,27 +10,28 @@
       },
       "G-Research.FSharp.Analyzers": {
         "type": "Direct",
-        "requested": "[0.10.0, )",
-        "resolved": "0.10.0",
-        "contentHash": "Xk38biuQ2gE3w8bA4F/cPC+OgxxhLAAW6RHavgopQ5VcuaJFjC9w0RHUyxOQUG3iqZvX4o9to911IW6pOWYEEg=="
+        "requested": "[0.11.0, )",
+        "resolved": "0.11.0",
+        "contentHash": "mzTpBrycqJq0SO/6fgYmpGvl48XnSU6VnuZ5wf8KRkqvfAsSFbiugXj11j3h38EEQO2ZlAeESKz3e+WqW0oHEA=="
       },
       "Giraffe": {
         "type": "Direct",
-        "requested": "[7.0.0-alpha-001, )",
-        "resolved": "7.0.0-alpha-001",
-        "contentHash": "bJnXSFtMXz0XaOw4NGBFCm1gkurWICqHVBofj+jdfcTqGQ349zqXwWb5yocjN8S5jb/+rLG0Tw5Nq+jzRQLdOQ==",
+        "requested": "[7.0.1, )",
+        "resolved": "7.0.1",
+        "contentHash": "Y7NZsNQYzb4P1pH9wS22cfUmV0mT8mrxW/uyk/iWh+6sJYHxxuZg3K7USaaWtm+miyq08MqMPkULtRx6YdBqWg==",
         "dependencies": {
           "FSharp.Core": "6.0.0",
+          "FSharp.SystemTextJson": "1.3.13",
           "Giraffe.ViewEngine": "1.4.0",
           "Microsoft.IO.RecyclableMemoryStream": "3.0.1",
-          "System.Text.Json": "8.0.3"
+          "System.Text.Json": "8.0.4"
         }
       },
       "Ionide.Analyzers": {
         "type": "Direct",
-        "requested": "[0.11.0, )",
-        "resolved": "0.11.0",
-        "contentHash": "HBkw31cN47nszwTDEWjTiun+q9i4wozRJr9tqZ7tiRsGWkFvbjnkNBHPuDOtVAAhti49zRr/v+ezn4L7fWgS4g=="
+        "requested": "[0.12.0, )",
+        "resolved": "0.12.0",
+        "contentHash": "wW6zDrd7/2vxehuyPY3JYisf8III3ng3EalOgh+QbJOukB/Nk6xGoqC1NDVSapnDZbEP5+6/YYUPN5kVSHugEg=="
       },
       "Microsoft.AspNetCore.OpenApi": {
         "type": "Direct",
@@ -49,6 +50,15 @@
         "dependencies": {
           "Microsoft.Build.Tasks.Git": "8.0.0",
           "Microsoft.SourceLink.Common": "8.0.0"
+        }
+      },
+      "FSharp.SystemTextJson": {
+        "type": "Transitive",
+        "resolved": "1.3.13",
+        "contentHash": "znp8odpdkVGKVX0AvbhiXdmeMi0KJ+A4AyAQWSkfAEAe4Z4clRE+rVhrLnAGrFD1VEIUX2lsQ4o84ywpWZUSGw==",
+        "dependencies": {
+          "FSharp.Core": "4.7.0",
+          "System.Text.Json": "6.0.0"
         }
       },
       "Giraffe.ViewEngine": {
@@ -86,8 +96,8 @@
       },
       "System.Text.Json": {
         "type": "Transitive",
-        "resolved": "8.0.3",
-        "contentHash": "hpagS9joOwv6efWfrMmV9MjQXpiXZH72PgN067Ysfr6AWMSD1/1hEcvh/U5mUpPLezEWsOJSuVrmqDIVD958iA==",
+        "resolved": "8.0.4",
+        "contentHash": "bAkhgDJ88XTsqczoxEMliSrpijKZHhbJQldhAmObj/RbrN3sU5dcokuXmWJWsdQAhiMJ9bTayWsL1C9fbbCRhw==",
         "dependencies": {
           "System.Text.Encodings.Web": "8.0.0"
         }
