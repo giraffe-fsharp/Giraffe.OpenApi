@@ -16,15 +16,15 @@
       },
       "Giraffe": {
         "type": "Direct",
-        "requested": "[7.0.1, )",
-        "resolved": "7.0.1",
-        "contentHash": "Y7NZsNQYzb4P1pH9wS22cfUmV0mT8mrxW/uyk/iWh+6sJYHxxuZg3K7USaaWtm+miyq08MqMPkULtRx6YdBqWg==",
+        "requested": "[7.0.2, )",
+        "resolved": "7.0.2",
+        "contentHash": "AwUqNORb9OmsqIGTAmbQtZBHoWz0yxACHA/xJqby3usUaqBUmrcz5dflVzPWUvqkulWPntwdRkQlzdt9zeEr6Q==",
         "dependencies": {
           "FSharp.Core": "6.0.0",
           "FSharp.SystemTextJson": "1.3.13",
           "Giraffe.ViewEngine": "1.4.0",
           "Microsoft.IO.RecyclableMemoryStream": "3.0.1",
-          "System.Text.Json": "8.0.4"
+          "System.Text.Json": "8.0.5"
         }
       },
       "Ionide.Analyzers": {
@@ -89,18 +89,10 @@
         "resolved": "8.0.0",
         "contentHash": "dk9JPxTCIevS75HyEQ0E4OVAFhB2N+V9ShCXf8Q6FkUQZDkgLI12y679Nym1YqsiSysuQskT7Z+6nUf3yab6Vw=="
       },
-      "System.Text.Encodings.Web": {
-        "type": "Transitive",
-        "resolved": "8.0.0",
-        "contentHash": "yev/k9GHAEGx2Rg3/tU6MQh4HGBXJs70y7j1LaM1i/ER9po+6nnQ6RRqTJn1E7Xu0fbIFK80Nh5EoODxrbxwBQ=="
-      },
       "System.Text.Json": {
         "type": "Transitive",
-        "resolved": "8.0.4",
-        "contentHash": "bAkhgDJ88XTsqczoxEMliSrpijKZHhbJQldhAmObj/RbrN3sU5dcokuXmWJWsdQAhiMJ9bTayWsL1C9fbbCRhw==",
-        "dependencies": {
-          "System.Text.Encodings.Web": "8.0.0"
-        }
+        "resolved": "8.0.5",
+        "contentHash": "0f1B50Ss7rqxXiaBJyzUu9bWFOO2/zSlifZ/UNMdiIpDYe4cY4LQQicP4nirK1OS31I43rn062UIJ1Q9bpmHpg=="
       },
       "FSharp.Core": {
         "type": "CentralTransitive",
