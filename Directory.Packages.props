@@ -9,7 +9,7 @@
     <PackageVersion Include="FSharp.Core" Version="8.0.300" />
     <!-- Giraffe.OpenApi -->
     <PackageVersion Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="All" />
-    <PackageVersion Include="Microsoft.AspNetCore.OpenApi" Version="8.0.10" />
+    <PackageVersion Include="Microsoft.AspNetCore.OpenApi" Version="8.0.11" />
     <!-- Sample App -->
     <PackageVersion Include="Swashbuckle.AspNetCore" Version="6.9.0" />
     <!-- Analyzers -->
