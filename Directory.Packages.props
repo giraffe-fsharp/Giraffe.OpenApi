@@ -9,12 +9,12 @@
     <PackageVersion Include="FSharp.Core" Version="8.0.300" />
     <!-- Giraffe.OpenApi -->
     <PackageVersion Include="Microsoft.SourceLink.GitHub" Version="8.0.0" />
-    <PackageVersion Include="Microsoft.AspNetCore.OpenApi" Version="8.0.15" />
+    <PackageVersion Include="Microsoft.AspNetCore.OpenApi" Version="8.0.16" />
     <!-- Sample App -->
-    <PackageVersion Include="Swashbuckle.AspNetCore" Version="8.1.1" />
+    <PackageVersion Include="Swashbuckle.AspNetCore" Version="8.1.4" />
     <!-- Analyzers -->
     <PackageVersion Include="FSharp.Analyzers.Build" Version="0.3.0" />
-    <PackageVersion Include="G-Research.FSharp.Analyzers" Version="0.14.0" />
-    <PackageVersion Include="Ionide.Analyzers" Version="0.14.4" />
+    <PackageVersion Include="G-Research.FSharp.Analyzers" Version="0.15.0" />
+    <PackageVersion Include="Ionide.Analyzers" Version="0.14.5" />
   </ItemGroup>
 </Project>

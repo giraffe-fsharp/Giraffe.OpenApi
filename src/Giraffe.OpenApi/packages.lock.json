@@ -10,9 +10,9 @@
       },
       "G-Research.FSharp.Analyzers": {
         "type": "Direct",
-        "requested": "[0.14.0, )",
-        "resolved": "0.14.0",
-        "contentHash": "Gtba1tCui0VsjVvGP+eQydDt3PM9fJvQ/Y1wniR4+ATpKfAFe7twQuOGkaMfdLLcLbNAe99ZKOnMo4bCyEA1XQ=="
+        "requested": "[0.15.0, )",
+        "resolved": "0.15.0",
+        "contentHash": "qXtJ1gZ2s2KHynha3roe5i8uEpBCZpeZhIXi4kgtDIqfmqdGBcTA6Blf2EF3YUtEQWJKJm8MXjl1PSetsk4iqw=="
       },
       "Giraffe": {
         "type": "Direct",
@@ -29,15 +29,15 @@
       },
       "Ionide.Analyzers": {
         "type": "Direct",
-        "requested": "[0.14.4, )",
-        "resolved": "0.14.4",
-        "contentHash": "mKcHEcDx+vjZTg2vm2cYjzr4UtqMGVs1TDhMQwSNveJNhFixxB2J+ZSGN/EihK/R+z989nLYnO1awAjzrqnVVQ=="
+        "requested": "[0.14.5, )",
+        "resolved": "0.14.5",
+        "contentHash": "rWkwLDsBoZm4ZD4CJH6GX1nIyC/Dv+1BqjRzCPXWqZpiilxABIRdlvknfExk93nRhevWs6eRG47pg8mg7ZnngA=="
       },
       "Microsoft.AspNetCore.OpenApi": {
         "type": "Direct",
-        "requested": "[8.0.15, )",
-        "resolved": "8.0.15",
-        "contentHash": "Nu/I5tek+FbumgyrfNAxcPZd8uQi6VTYfZ+6Wr/JYrHFM6zb6DJx99v5QjMnsf9ePHkUto0zvUFVaA2gpiV9mQ==",
+        "requested": "[8.0.16, )",
+        "resolved": "8.0.16",
+        "contentHash": "jeZBYi62BKGRZXEkXAr9hj1L6u71HRKE7EPaZBouF1xmKdQIX7GO5oSRLTQLQmmST0y/aaI+Mr4OzyyRjmBFog==",
         "dependencies": {
           "Microsoft.OpenApi": "1.4.3"
         }
