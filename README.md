@@ -9,14 +9,17 @@ An extension for the [Giraffe](https://github.com/giraffe-fsharp/Giraffe) Web Ap
 
 ## Table of Contents 
 
-- [About](#about)
-- [Getting Started](#getting-started)
-- [Documentation](#documentation)
-  - [Integration](#integration)
-  - [addOpenApi](#addopenapi)
-  - [addOpenApiSimple](#addopenapisimple)
-  - [configureEndpoint](#configureendpoint)
-- [License](#license)
+- [Giraffe.OpenApi](#giraffeopenapi)
+  - [Table of Contents](#table-of-contents)
+  - [About](#about)
+  - [Getting Started](#getting-started)
+  - [Documentation](#documentation)
+    - [Integration](#integration)
+    - [addOpenApi](#addopenapi)
+    - [addOpenApiSimple](#addopenapisimple)
+      - [Behavior and Nuances](#behavior-and-nuances)
+    - [configureEndpoint](#configureendpoint)
+  - [License](#license)
 
 ## About
 
@@ -108,10 +111,42 @@ Response body schema will be inferred from the types passed to `requestBody` and
 
 ### addOpenApiSimple
 
-This method is a shortcut for simple cases. It accepts two generic type parameters - request and response, so the schema can be inferred from them.
+This method is a shortcut for simple cases. It accepts two generic type parameters—request and response—so the schema can be inferred from them.
 
 ```fsharp
 let addOpenApiSimple<'Req, 'Res> = ...
+```
+
+#### Behavior and Nuances
+
+- **Request Type (`'Req`)**:
+    - If `'Req` is `unit`, the endpoint is treated as not requiring a request body (e.g., for GET endpoints).
+    - If `'Req` is a tuple or a primitive type (e.g., `int`, `string`), the endpoint is treated as not requiring a request body. These are typically used for path or query parameters, and the parameters are inferred from the route template.
+    - If `'Req` is a any other complex type (e.g., record or class types), the endpoint is treated as requiring a request body. The schema is inferred from the type's fields.
+- **Response Type (`'Res`)**:
+    - The response schema is always inferred from the type provided as `'Res`.
+    - If `'Res` is `unit`, the endpoint is treated as not returning a response body.
+
+**Important:**
+- You do not need to describe route or query parameters when using `addOpenApiSimple`; they are inferred from the route template and the handler signature.
+- If you want path parameters to be named, use the `routef` function with parameter labels in the route template (e.g., `routef "/users/%s:username/age/%i:age"`).
+- Only use record or class types for request bodies. If you use a tuple or primitive as `'Req`, it will be treated as path/query parameters, not as a body.
+- This behavior is designed with the idea that tuples and primitives are used for route parameters and records are used for complex request bodies.
+
+**Examples:**
+
+```fsharp
+// No request body, returns a record
+route "/hello" (json { Hello = "Hello from Giraffe" })
+|> addOpenApiSimple<unit, FsharpMessage>
+
+// Path parameters only, no request body
+routef "/users/%s:username/age/%i:age" handler
+|> addOpenApiSimple<string * int, string>
+
+// Request body required (record type)
+route "/message" handler
+|> addOpenApiSimple<MyMessageRecord, string>
 ```
 
 If your handler doesn't accept any input, you can pass `unit` as a request type (works for response as well).
