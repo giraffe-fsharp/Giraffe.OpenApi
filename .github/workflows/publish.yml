@@ -13,6 +13,10 @@ env:
   # Project name to pack and publish
   PROJECT_NAME: Giraffe.OpenApi
   DOTNET_VERSION: 8.0.301
+  DOTNET_MULTILEVEL_LOOKUP: '0'
+  DOTNET_NOLOGO: 'true'
+  FORCE_COLOR: '1'
+  NUGET_XMLDOC_MODE: ''
   # GitHub Packages Feed settings
   GITHUB_FEED: https://nuget.pkg.github.com/giraffe-fsharp/
   GITHUB_USER: dustinmoris
@@ -21,6 +25,9 @@ env:
   NUGET_FEED: https://api.nuget.org/v3/index.json
   NUGET_KEY: ${{ secrets.NUGET_KEY }}
 
+permissions:
+  contents: read
+  
 jobs:
   build:
     name: Build the project
