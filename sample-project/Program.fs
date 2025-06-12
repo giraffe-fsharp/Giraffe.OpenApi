@@ -29,7 +29,7 @@ let handler3 (firstName: string) (_: HttpFunc) (ctx: HttpContext) =
     $"Hello %s{firstName}!" |> ctx.WriteTextAsync
 
 /// Redirects to the swagger interface from the root of the site.
-let swaggerRedirectHandler : HttpHandler = redirectTo true "swagger/index.html"
+let swaggerRedirectHandler: HttpHandler = redirectTo true "swagger/index.html"
 
 let endpoints = [
     route "/" swaggerRedirectHandler
