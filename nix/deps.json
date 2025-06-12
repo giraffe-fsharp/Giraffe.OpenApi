@@ -1,0 +1,82 @@
+[
+  {
+    "pname": "fantomas",
+    "version": "7.0.2",
+    "hash": "sha256-BAaENIm/ksTiXrUImRgKoIXTGIlgsX7ch6ayoFjhJXA="
+  },
+  {
+    "pname": "fsharp-analyzers",
+    "version": "0.31.0",
+    "hash": "sha256-PoAvaXbXsmvVw870UsnqdD20HoBHO7u4bzoaz5DXfzM="
+  },
+  {
+    "pname": "FSharp.Analyzers.Build",
+    "version": "0.3.0",
+    "hash": "sha256-Lrb30y+i2NuSyFT/kBQz0HKKGDAi1dGso4T7TROTMbE="
+  },
+  {
+    "pname": "FSharp.Core",
+    "version": "6.0.0",
+    "hash": "sha256-aQDRgiGC7iTyzNEmvyd2RBCDcLG0I1dbfncHlkbeUMI="
+  },
+  {
+    "pname": "FSharp.SystemTextJson",
+    "version": "1.3.13",
+    "hash": "sha256-bKRxiNxC3SE39maP82hGzArB/NpxvQFP+LCBsqACkoI="
+  },
+  {
+    "pname": "G-Research.FSharp.Analyzers",
+    "version": "0.15.0",
+    "hash": "sha256-YVFVFYX8m0pqALH4Zjm4KViFDQESwxeH0WbdmHow2hI="
+  },
+  {
+    "pname": "Giraffe",
+    "version": "7.0.2",
+    "hash": "sha256-6uDiznNOO7FhsTlqg2mndlQRjI7WwLTFdkCyj2gxXr8="
+  },
+  {
+    "pname": "Giraffe.ViewEngine",
+    "version": "1.4.0",
+    "hash": "sha256-lK0vnPH+kmogxdMZWcaJkLeTyfNA43rszg0bAZQFyKU="
+  },
+  {
+    "pname": "Ionide.Analyzers",
+    "version": "0.14.5",
+    "hash": "sha256-0bJGA3+8+FC3C6e1l4j0mrRO2uujQOf2C3Qa+JxkH3o="
+  },
+  {
+    "pname": "Microsoft.AspNetCore.OpenApi",
+    "version": "8.0.16",
+    "hash": "sha256-Jj+9+qpBzqGUc3HME3HqPzRR8T+wzk89hwUIQhBY2As="
+  },
+  {
+    "pname": "Microsoft.Build.Tasks.Git",
+    "version": "8.0.0",
+    "hash": "sha256-vX6/kPij8vNAu8f7rrvHHhPrNph20IcufmrBgZNxpQA="
+  },
+  {
+    "pname": "Microsoft.IO.RecyclableMemoryStream",
+    "version": "3.0.1",
+    "hash": "sha256-unFg/5EcU/XKJbob4GtQC43Ydgi5VjeBGs7hfhj4EYo="
+  },
+  {
+    "pname": "Microsoft.OpenApi",
+    "version": "1.4.3",
+    "hash": "sha256-vk47e78OwopXJx2LhDRbKFObqF3GShHfNHR2SzvbQeA="
+  },
+  {
+    "pname": "Microsoft.SourceLink.Common",
+    "version": "8.0.0",
+    "hash": "sha256-AfUqleVEqWuHE7z2hNiwOLnquBJ3tuYtbkdGMppHOXc="
+  },
+  {
+    "pname": "Microsoft.SourceLink.GitHub",
+    "version": "8.0.0",
+    "hash": "sha256-hNTkpKdCLY5kIuOmznD1mY+pRdJ0PKu2HypyXog9vb0="
+  },
+  {
+    "pname": "System.Text.Json",
+    "version": "8.0.5",
+    "hash": "sha256-yKxo54w5odWT6nPruUVsaX53oPRe+gKzGvLnnxtwP68="
+  }
+]
