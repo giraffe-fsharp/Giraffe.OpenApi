@@ -8,8 +8,12 @@ env:
   # Stop wasting time caching packages
   DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
   # Disable sending usage data to Microsoft
-  DOTNET_CLI_TELEMETRY_OPTOUT: true
+  DOTNET_CLI_TELEMETRY_OPTOUT: 'true'
   DOTNET_VERSION: 8.0.301
+  DOTNET_MULTILEVEL_LOOKUP: '0'
+  DOTNET_NOLOGO: 'true'
+  FORCE_COLOR: '1'
+  NUGET_XMLDOC_MODE: ''
 
 # Kill other jobs when we trigger this workflow by sending new commits
 # to the PR.
@@ -18,10 +22,13 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
   cancel-in-progress: true
 
+permissions:
+  contents: read
+
 jobs:
   fantomas-check:
     name: "Format with Fantomas"
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     steps:
       -   name: Checkout repository
           uses: actions/checkout@v4
