@@ -1,4 +1,4 @@
-﻿namespace Giraffe.OpenApi
+namespace Giraffe.OpenApi
 
 // Modified for Giraffe, from https://github.com/Lanayx/Oxpecker/blob/develop/src/Oxpecker.OpenApi/Routing.fs.
 //
@@ -25,6 +25,7 @@
 // SOFTWARE.
 
 open System.Reflection
+open FSharp.Reflection
 
 [<AutoOpen>]
 module Routing =
@@ -84,7 +85,8 @@ module Routing =
             | reqType, respType when reqType = unitType && respType = unitType -> "InvokeUnit"
             | reqType, _ when reqType = unitType -> "InvokeUnitReq"
             | _, respType when respType = unitType -> "InvokeUnitResp"
-            | _, _ -> "Invoke"
+            | reqType, _ when FSharpType.IsTuple reqType -> "InvokeUnitReq"
+            | _ -> "Invoke"
         configureEndpoint
             _.WithMetadata(
                 typeof<FakeFunc<'Req, 'Res>>

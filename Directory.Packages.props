@@ -4,12 +4,12 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- Common -->
-    <PackageVersion Include="Giraffe" Version="7.0.2" />
-    <PackageVersion Include="Ionide.KeepAChangelog.Tasks" Version="0.1.8" />
-    <PackageVersion Include="FSharp.Core" Version="8.0.300" />
+    <PackageVersion Include="Giraffe" Version="8.0.0-alpha-003" />
+    <PackageVersion Include="Ionide.KeepAChangelog.Tasks" Version="0.2.0" />
+    <PackageVersion Include="FSharp.Core" Version="8.0.403" />
     <!-- Giraffe.OpenApi -->
     <PackageVersion Include="Microsoft.SourceLink.GitHub" Version="8.0.0" />
-    <PackageVersion Include="Microsoft.AspNetCore.OpenApi" Version="8.0.16" />
+    <PackageVersion Include="Microsoft.AspNetCore.OpenApi" Version="8.0.17" />
     <!-- Sample App -->
     <PackageVersion Include="Swashbuckle.AspNetCore" Version="8.1.4" />
     <!-- Analyzers -->

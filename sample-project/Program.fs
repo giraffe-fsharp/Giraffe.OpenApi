@@ -1,4 +1,4 @@
-﻿open System
+open System
 open System.IO
 open Microsoft.AspNetCore.Builder
 open Microsoft.AspNetCore.Http
@@ -25,7 +25,14 @@ let handler1 (_: HttpFunc) (ctx: HttpContext) = ctx.WriteTextAsync "Hello World"
 let handler2 (firstName: string, age: int) (_: HttpFunc) (ctx: HttpContext) =
     $"Hello %s{firstName}, you are %i{age} years old." |> ctx.WriteTextAsync
 
+let handler3 (firstName: string) (_: HttpFunc) (ctx: HttpContext) =
+    $"Hello %s{firstName}!" |> ctx.WriteTextAsync
+
+/// Redirects to the swagger interface from the root of the site.
+let swaggerRedirectHandler: HttpHandler = redirectTo true "swagger/index.html"
+
 let endpoints = [
+    route "/" swaggerRedirectHandler
     GET [
         route "/hello" (json { Hello = "Hello from Giraffe" })
         |> configureEndpoint _.WithTags("SampleApp")
@@ -33,11 +40,17 @@ let endpoints = [
         |> configureEndpoint _.WithDescription("Will return a Hello from Giraffe.")
         |> addOpenApiSimple<unit, FsharpMessage>
 
-        routef "/%s/%i" handler2
+        routef "first-names/%s:firstName/ages/%i:age" handler2
         |> configureEndpoint _.WithTags("SampleApp")
         |> configureEndpoint _.WithSummary("Fetches a response from handler2")
         |> configureEndpoint _.WithDescription("Will return a Hello from Handler 2.")
         |> addOpenApiSimple<string * int, string>
+
+        routef "names/%s:firstName" handler3
+        |> configureEndpoint _.WithTags("SampleApp")
+        |> configureEndpoint _.WithSummary("Fetches a response from handler3")
+        |> configureEndpoint _.WithDescription("Will return a Hello from Handler 3.")
+        |> addOpenApiSimple<string, string>
     ]
     POST [
         route "/message" (text "Message posted!")
