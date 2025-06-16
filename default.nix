@@ -11,14 +11,16 @@ let
   pname = "Giraffe.OpenApi";
   dotnet-sdk = pkgs.dotnet-sdk_8;
   dotnet-runtime = pkgs.dotnetCorePackages.runtime_8_0;
-  version = "0.0.1";
+  version = "0.0.2";
   shell = pkgs.mkShellNoCC {
     buildInputs = [
       dotnet-sdk
     ];
 
     packages = [
+      pkgs.npins
       pkgs.fantomas
+      pkgs.fsautocomplete
     ];
 
     DOTNET_ROOT = "${dotnet-sdk}";

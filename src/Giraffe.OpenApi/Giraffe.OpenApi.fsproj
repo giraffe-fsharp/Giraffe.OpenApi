@@ -19,8 +19,8 @@
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
-    <Version>0.0.1</Version>
-    <PackageVersion>0.0.1</PackageVersion>
+    <Version>0.0.2</Version>
+    <PackageVersion>0.0.2</PackageVersion>
     <PackageReleaseNotes>Initial Version</PackageReleaseNotes>
     <Copyright>Copyright © $([System.DateTime]::UtcNow.Year)</Copyright>
   </PropertyGroup>
