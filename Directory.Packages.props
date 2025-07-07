@@ -14,7 +14,7 @@
     <PackageVersion Include="Swashbuckle.AspNetCore" Version="9.0.1" />
     <!-- Analyzers -->
     <PackageVersion Include="FSharp.Analyzers.Build" Version="0.3.0" />
-    <PackageVersion Include="G-Research.FSharp.Analyzers" Version="0.15.0" />
+    <PackageVersion Include="G-Research.FSharp.Analyzers" Version="0.16.0" />
     <PackageVersion Include="Ionide.Analyzers" Version="0.14.5" />
   </ItemGroup>
 </Project>
