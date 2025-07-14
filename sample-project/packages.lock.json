@@ -10,9 +10,9 @@
       },
       "G-Research.FSharp.Analyzers": {
         "type": "Direct",
-        "requested": "[0.16.0, )",
-        "resolved": "0.16.0",
-        "contentHash": "rEwum17EdA2b4DfiAxVGaq7IpB02+92fR+EVbEQNt/IXENDtZSUAOiLC4O2o6ZvmzEGTem0Y3Vdlpe8zFK1otw=="
+        "requested": "[0.17.0, )",
+        "resolved": "0.17.0",
+        "contentHash": "NHjoj71H/feqnCSn2dCgSFfYwcgE/dfmhTA1eftuVErJDJE9XtnoLz8cH3yz9BRggtpaP+WC0mcyw5ceQD5cjA=="
       },
       "Giraffe": {
         "type": "Direct",
@@ -29,20 +29,20 @@
       },
       "Ionide.Analyzers": {
         "type": "Direct",
-        "requested": "[0.14.5, )",
-        "resolved": "0.14.5",
-        "contentHash": "rWkwLDsBoZm4ZD4CJH6GX1nIyC/Dv+1BqjRzCPXWqZpiilxABIRdlvknfExk93nRhevWs6eRG47pg8mg7ZnngA=="
+        "requested": "[0.14.6, )",
+        "resolved": "0.14.6",
+        "contentHash": "nZRCq0jhkjgDy/wTOkiTMNLLHzsdnxz1zwPLdVKsVmFwM9DNo5foId6pzW60GcYMGrqs5+MndykRXQR6rxnU8w=="
       },
       "Swashbuckle.AspNetCore": {
         "type": "Direct",
-        "requested": "[9.0.1, )",
-        "resolved": "9.0.1",
-        "contentHash": "lmaz0juKGq8VgeCOki98OUVdEH7rvgBST0QrlWXNOxBl7ujNWyqdqj2SMAdgpQfTtBlSQUTHRslRM+0j7El5tA==",
+        "requested": "[9.0.3, )",
+        "resolved": "9.0.3",
+        "contentHash": "Akk4oFgy0ST8Q8pZTfPbrt045tWNyMMiKhlbYjG3qnjQZLz645IL5vhQm7NLicc2sAAQ+vftArIlsYWFevmb2g==",
         "dependencies": {
           "Microsoft.Extensions.ApiDescription.Server": "8.0.0",
-          "Swashbuckle.AspNetCore.Swagger": "9.0.1",
-          "Swashbuckle.AspNetCore.SwaggerGen": "9.0.1",
-          "Swashbuckle.AspNetCore.SwaggerUI": "9.0.1"
+          "Swashbuckle.AspNetCore.Swagger": "9.0.3",
+          "Swashbuckle.AspNetCore.SwaggerGen": "9.0.3",
+          "Swashbuckle.AspNetCore.SwaggerUI": "9.0.3"
         }
       },
       "FSharp.SystemTextJson": {
@@ -79,24 +79,24 @@
       },
       "Swashbuckle.AspNetCore.Swagger": {
         "type": "Transitive",
-        "resolved": "9.0.1",
-        "contentHash": "4/9tBsbeCN+ewwqjEBPq3BszNE9tOvA1iDogwT7qW7L0Uh942IozhtF9VaICD70XyZIlKNiHjc2Vt5QE09P4nw==",
+        "resolved": "9.0.3",
+        "contentHash": "CGpkZDWj1g/yH/0wYkxUtBhiFo5TY/Esq2fS0vlBvLOs1UL2Jzef9tdtYmTdd3zBPtnMyXQcsXjMt9yCxz4VaA==",
         "dependencies": {
           "Microsoft.OpenApi": "1.6.23"
         }
       },
       "Swashbuckle.AspNetCore.SwaggerGen": {
         "type": "Transitive",
-        "resolved": "9.0.1",
-        "contentHash": "Za5w1NfLMF0Tt4GTgC491wfmuuMwNw8A5nwZuytpBd4UXYZxkwNJa3QnRYGbUQD9MjLzQCYnKc8rMrr5LglW6A==",
+        "resolved": "9.0.3",
+        "contentHash": "STqjhw1TZiEGmIRgE6jcJUOcgU/Fjquc6dP4GqbuwBzqWZAWr/9T7FZOGWYEwKnmkMplzlUNepGHwnUrfTP0fw==",
         "dependencies": {
-          "Swashbuckle.AspNetCore.Swagger": "9.0.1"
+          "Swashbuckle.AspNetCore.Swagger": "9.0.3"
         }
       },
       "Swashbuckle.AspNetCore.SwaggerUI": {
         "type": "Transitive",
-        "resolved": "9.0.1",
-        "contentHash": "UuU+RvZbJZmnciVzi8G0jb3c6xeA4O8pQGrxl30eCK3pRNvurzZgS6shEei27q9wgvp0/UrTUNUM/a1kSlTfzw=="
+        "resolved": "9.0.3",
+        "contentHash": "DgJKJASz5OAygeKv2+N0FCZVhQylESqLXrtrRAqIT0vKpX7t5ImJ1FL6+6OqxKiamGkL0jchRXR8OgpMSsMh8w=="
       },
       "System.Text.Json": {
         "type": "Transitive",
@@ -107,7 +107,7 @@
         "type": "Project",
         "dependencies": {
           "Giraffe": "[8.0.0-alpha-003, )",
-          "Microsoft.AspNetCore.OpenApi": "[8.0.17, )"
+          "Microsoft.AspNetCore.OpenApi": "[8.0.18, )"
         }
       },
       "FSharp.Core": {
@@ -118,9 +118,9 @@
       },
       "Microsoft.AspNetCore.OpenApi": {
         "type": "CentralTransitive",
-        "requested": "[8.0.17, )",
-        "resolved": "8.0.17",
-        "contentHash": "sGed2RDkJYAoi7N4gUTota56Mix/Vu6UrzCWdwqH1jZwnLnZb+eP2zdABYCaVlBEHBwzuL1zchUFtJXW4lO5LA==",
+        "requested": "[8.0.18, )",
+        "resolved": "8.0.18",
+        "contentHash": "iHqDbyK66dTL2M32nQ/kqYXGbQFj5bUr0eXJskJMsuPCF4CfJbJCuSnwWKq0m2TrMGuNV01RJLU61S2uvS04+g==",
         "dependencies": {
           "Microsoft.OpenApi": "1.4.3"
         }
