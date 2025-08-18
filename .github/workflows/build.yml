@@ -31,7 +31,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       -   name: Checkout repository
-          uses: actions/checkout@v4
+          uses: actions/checkout@v5
 
       -   name: Setup .NET Core
           uses: actions/setup-dotnet@v4
@@ -52,7 +52,7 @@ jobs:
         os: [ ubuntu-latest, windows-latest, macos-latest ]
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       # workaround for https://github.com/actions/runner/issues/2033
       - name: ownership workaround
