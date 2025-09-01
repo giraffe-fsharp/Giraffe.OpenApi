@@ -11,7 +11,7 @@
     <PackageVersion Include="Microsoft.SourceLink.GitHub" Version="8.0.0" />
     <PackageVersion Include="Microsoft.AspNetCore.OpenApi" Version="8.0.19" />
     <!-- Sample App -->
-    <PackageVersion Include="Swashbuckle.AspNetCore" Version="9.0.3" />
+    <PackageVersion Include="Swashbuckle.AspNetCore" Version="9.0.4" />
     <!-- Analyzers -->
     <PackageVersion Include="FSharp.Analyzers.Build" Version="0.3.0" />
     <PackageVersion Include="G-Research.FSharp.Analyzers" Version="0.17.0" />
