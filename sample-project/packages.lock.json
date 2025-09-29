@@ -4,9 +4,9 @@
     "net8.0": {
       "FSharp.Analyzers.Build": {
         "type": "Direct",
-        "requested": "[0.3.0, )",
-        "resolved": "0.3.0",
-        "contentHash": "twj4mNJLOEjHK6OQJCAbix2d8ODG5RySASejQ/v2fLgoqyRqYsXmceFaXb17ZE1pNrfenjwv/xpR+GembufaZA=="
+        "requested": "[0.4.0, )",
+        "resolved": "0.4.0",
+        "contentHash": "cItxKjhwOSJ9n1w2GuW0qFXRYkkBN8UYcK31+dVQfqfX8T1ImUgVBtXtfykjhFdtaJ4aQNnCdHMHZrbAVB2bjg=="
       },
       "G-Research.FSharp.Analyzers": {
         "type": "Direct",
@@ -107,7 +107,7 @@
         "type": "Project",
         "dependencies": {
           "Giraffe": "[8.0.0-alpha-003, )",
-          "Microsoft.AspNetCore.OpenApi": "[8.0.19, )"
+          "Microsoft.AspNetCore.OpenApi": "[8.0.20, )"
         }
       },
       "FSharp.Core": {
@@ -118,9 +118,9 @@
       },
       "Microsoft.AspNetCore.OpenApi": {
         "type": "CentralTransitive",
-        "requested": "[8.0.19, )",
-        "resolved": "8.0.19",
-        "contentHash": "W3R++XjVxo/hFldbg0IGAFeTA28M3Vagml4/GIIYC/5wYKrO4fdVM2+y/V6Bu6GEHe6OL8E6gcBqPod1OjkoeQ==",
+        "requested": "[8.0.20, )",
+        "resolved": "8.0.20",
+        "contentHash": "IjWB1Q/Ar8fyfE3cKjybSlpAE++miAkDGbSup0WeFOtZn2vK+myK7RWDJlFdWICLLU50CmmLad91toIJNTrymQ==",
         "dependencies": {
           "Microsoft.OpenApi": "1.4.3"
         }
