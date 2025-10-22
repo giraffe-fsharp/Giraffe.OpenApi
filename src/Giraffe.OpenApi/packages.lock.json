@@ -4,9 +4,9 @@
     "net8.0": {
       "FSharp.Analyzers.Build": {
         "type": "Direct",
-        "requested": "[0.3.0, )",
-        "resolved": "0.3.0",
-        "contentHash": "twj4mNJLOEjHK6OQJCAbix2d8ODG5RySASejQ/v2fLgoqyRqYsXmceFaXb17ZE1pNrfenjwv/xpR+GembufaZA=="
+        "requested": "[0.4.0, )",
+        "resolved": "0.4.0",
+        "contentHash": "cItxKjhwOSJ9n1w2GuW0qFXRYkkBN8UYcK31+dVQfqfX8T1ImUgVBtXtfykjhFdtaJ4aQNnCdHMHZrbAVB2bjg=="
       },
       "G-Research.FSharp.Analyzers": {
         "type": "Direct",
