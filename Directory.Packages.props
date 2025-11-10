@@ -13,7 +13,7 @@
     <!-- Sample App -->
     <PackageVersion Include="Swashbuckle.AspNetCore" Version="9.0.6" />
     <!-- Analyzers -->
-    <PackageVersion Include="FSharp.Analyzers.Build" Version="0.3.0" />
+    <PackageVersion Include="FSharp.Analyzers.Build" Version="0.4.0" />
     <PackageVersion Include="G-Research.FSharp.Analyzers" Version="0.18.0" />
     <PackageVersion Include="Ionide.Analyzers" Version="0.14.9" />
   </ItemGroup>
