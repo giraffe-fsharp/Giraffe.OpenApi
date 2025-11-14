@@ -13,6 +13,7 @@
   <ItemGroup>
     <PackageReference Include="Swashbuckle.AspNetCore" />
     <PackageReference Include="Giraffe" />
+    <PackageReference Include="FSharp.SystemTextJson" />
   </ItemGroup>
 
   <ItemGroup>
