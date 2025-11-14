@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
+    <TargetFramework>net9.0</TargetFramework>
     <PackageId>Giraffe.OpenApi</PackageId>
     <Title>Giraffe.OpenApi</Title>
     <RootNamespace>Giraffe.OpenApi</RootNamespace>
@@ -29,6 +29,7 @@
     <None Include="../../giraffe-64.png" Pack="true" PackagePath="\" />
     <None Include="../../README.md" Pack="true" PackagePath="\" />
     <Compile Include="Configuration.fs"/>
+    <Compile Include="SchemaFilters.fs"/>
     <Compile Include="Routing.fs"/>
   </ItemGroup>
 
@@ -36,5 +37,6 @@
     <PackageReference Include="Giraffe" />
     <PackageReference Include="Microsoft.SourceLink.GitHub" PrivateAssets="All" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi"/>
+    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen"/>
   </ItemGroup>
 </Project>
