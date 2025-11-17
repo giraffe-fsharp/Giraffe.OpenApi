@@ -13,7 +13,7 @@ open Swashbuckle.AspNetCore.SwaggerGen
 /// </summary>
 type DiscriminatedUnionSchemaFilter() =
     interface ISchemaFilter with
-        member _.Apply(schema: OpenApiSchema, context: SchemaFilterContext) =
+        member _.Apply (schema: OpenApiSchema, context: SchemaFilterContext) =
             // Check if the type is a regular .NET enum
             if context.Type.IsEnum then
                 // Map to string enum
@@ -40,13 +40,16 @@ type DiscriminatedUnionSchemaFilter() =
                 let enumList = String.Join(", ", enumNames)
                 schema.Description <-
                     match schema.Description with
-                    | null | "" -> sprintf "Enum values: %s" enumList
+                    | null
+                    | "" -> sprintf "Enum values: %s" enumList
                     | existing -> sprintf "%s (Enum values: %s)" existing enumList
 
             // Check if the type is an F# discriminated union
             elif FSharpType.IsUnion(context.Type) then
                 // Exclude option types and unit type
-                let isOption = context.Type.IsGenericType && context.Type.GetGenericTypeDefinition() = typedefof<option<_>>
+                let isOption =
+                    context.Type.IsGenericType
+                    && context.Type.GetGenericTypeDefinition() = typedefof<option<_>>
                 let isUnit = context.Type = typeof<unit>
 
                 if not isOption && not isUnit then
@@ -82,5 +85,6 @@ type DiscriminatedUnionSchemaFilter() =
                         let enumList = String.Join(", ", cases |> Array.map (fun c -> c.Name))
                         schema.Description <-
                             match schema.Description with
-                            | null | "" -> sprintf "Enum values: %s" enumList
+                            | null
+                            | "" -> sprintf "Enum values: %s" enumList
                             | existing -> sprintf "%s (Enum values: %s)" existing enumList
