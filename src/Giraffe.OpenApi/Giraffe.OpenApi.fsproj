@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>net9.0</TargetFramework>
     <PackageId>Giraffe.OpenApi</PackageId>
@@ -6,9 +6,9 @@
     <RootNamespace>Giraffe.OpenApi</RootNamespace>
     <AssemblyName>Giraffe.OpenApi</AssemblyName>
     <Description>OpenApi support for Giraffe</Description>
-    <RepositoryUrl>https://github.com/mrtz-j/Giraffe.OpenApi</RepositoryUrl>
+    <RepositoryUrl>https://github.com/giraffe-fsharp/Giraffe.OpenApi</RepositoryUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageProjectUrl>https://github.com/mrtz-j/Giraffe.OpenApi/src/Giraffe.OpenApi</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/giraffe-fsharp/Giraffe.OpenApi/src/Giraffe.OpenApi</PackageProjectUrl>
     <PackageIcon>giraffe-64.png</PackageIcon>
     <RepositoryType>git</RepositoryType>
     <PackageTags>Giraffe;ASP.NET Core;F#;FSharp;Http;Web;OpenApi</PackageTags>
@@ -19,8 +19,8 @@
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
-    <Version>0.0.2</Version>
-    <PackageVersion>0.0.2</PackageVersion>
+    <Version>0.0.3</Version>
+    <PackageVersion>0.0.3</PackageVersion>
     <PackageReleaseNotes>Initial Version</PackageReleaseNotes>
     <Copyright>Copyright © $([System.DateTime]::UtcNow.Year)</Copyright>
   </PropertyGroup>

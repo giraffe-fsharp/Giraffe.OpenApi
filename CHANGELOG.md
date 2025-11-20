@@ -1,5 +1,11 @@
 Notable changes are recorded here.
 
+# Giraffe.OpenApi 0.0.3
+
+## Updates
+
+- Add support for discriminated unions - Credits @OnurGumus
+
 # Giraffe.OpenApi 0.0.2
 
 ## Updates
