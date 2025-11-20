@@ -12,7 +12,7 @@ env:
   DOTNET_CLI_TELEMETRY_OPTOUT: true
   # Project name to pack and publish
   PROJECT_NAME: Giraffe.OpenApi
-  DOTNET_VERSION: 8.0.301
+  DOTNET_VERSION: 9.0.101
   DOTNET_MULTILEVEL_LOOKUP: '0'
   DOTNET_NOLOGO: 'true'
   FORCE_COLOR: '1'

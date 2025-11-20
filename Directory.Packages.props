@@ -6,12 +6,14 @@
     <!-- Common -->
     <PackageVersion Include="Giraffe" Version="8.0.0-alpha-003" />
     <PackageVersion Include="Ionide.KeepAChangelog.Tasks" Version="0.2.0" />
-    <PackageVersion Include="FSharp.Core" Version="8.0.403" />
+    <PackageVersion Include="FSharp.Core" Version="9.0.100" />
     <!-- Giraffe.OpenApi -->
     <PackageVersion Include="Microsoft.SourceLink.GitHub" Version="8.0.0" />
-    <PackageVersion Include="Microsoft.AspNetCore.OpenApi" Version="8.0.20" />
+    <PackageVersion Include="Microsoft.AspNetCore.OpenApi" Version="9.0.0" />
+    <PackageVersion Include="Swashbuckle.AspNetCore.SwaggerGen" Version="9.0.6" />
     <!-- Sample App -->
     <PackageVersion Include="Swashbuckle.AspNetCore" Version="9.0.6" />
+    <PackageVersion Include="FSharp.SystemTextJson" Version="1.3.13" />
     <!-- Analyzers -->
     <PackageVersion Include="FSharp.Analyzers.Build" Version="0.4.0" />
     <PackageVersion Include="G-Research.FSharp.Analyzers" Version="0.18.0" />
