@@ -132,7 +132,10 @@ let endpoints = [
         route "/media-sets/status" mediaSetStatusHandler
         |> configureEndpoint _.WithTags("MediaSet")
         |> configureEndpoint _.WithSummary("Gets media set status information")
-        |> configureEndpoint _.WithDescription("Returns an array of media set status info with discriminated union status field.")
+        |> configureEndpoint
+            _.WithDescription(
+                "Returns an array of media set status info with discriminated union status field."
+            )
         |> addOpenApiSimple<unit, MediaSetStatusInfo array>
     ]
     POST [
@@ -174,7 +177,8 @@ let configureServices (services: IServiceCollection) =
 
     // Configure JSON serialization options with F# support
     let fsOptions =
-        JsonFSharpOptions.Default()
+        JsonFSharpOptions
+            .Default()
             .WithUnionAdjacentTag()
             .WithUnionTagCaseInsensitive()
             .WithUnionUnwrapFieldlessTags()
@@ -187,15 +191,19 @@ let configureServices (services: IServiceCollection) =
     // Configure ASP.NET Core JSON options (for OpenAPI schema generation)
     services.ConfigureHttpJsonOptions(fun (options: Microsoft.AspNetCore.Http.Json.JsonOptions) ->
         options.SerializerOptions.PropertyNamingPolicy <- JsonNamingPolicy.CamelCase
-        options.SerializerOptions.Converters.Add(JsonStringEnumConverter(JsonNamingPolicy.CamelCase))
+        options.SerializerOptions.Converters.Add(
+            JsonStringEnumConverter(JsonNamingPolicy.CamelCase)
+        )
         let fsOpts =
-            JsonFSharpOptions.Default()
+            JsonFSharpOptions
+                .Default()
                 .WithUnionAdjacentTag()
                 .WithUnionTagCaseInsensitive()
                 .WithUnionUnwrapFieldlessTags()
                 .WithUnionTagNamingPolicy(JsonNamingPolicy.CamelCase)
         options.SerializerOptions.Converters.Add(JsonFSharpConverter(fsOpts))
-    ) |> ignore
+    )
+    |> ignore
 
     services
         .AddRouting()

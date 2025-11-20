@@ -1,17 +1,12 @@
 {
-  sources ? import ./npins,
-  system ? builtins.currentSystem,
-  pkgs ? import sources.nixpkgs {
-    inherit system;
-    config = { };
-    overlays = [ ];
-  },
+  sources ? import ./nix,
+  pkgs ? import sources.nixpkgs { },
 }:
 let
   pname = "Giraffe.OpenApi";
-  dotnet-sdk = pkgs.dotnet-sdk_8;
-  dotnet-runtime = pkgs.dotnetCorePackages.runtime_8_0;
-  version = "0.0.2";
+  dotnet-sdk = pkgs.dotnetCorePackages.sdk_9_0;
+  dotnet-runtime = pkgs.dotnetCorePackages.aspnetcore_9_0;
+  version = "0.0.3";
   shell = pkgs.mkShellNoCC {
     buildInputs = [
       dotnet-sdk
@@ -23,7 +18,9 @@ let
       pkgs.fsautocomplete
     ];
 
-    DOTNET_ROOT = "${dotnet-sdk}";
+    DOTNET_ROOT = "${dotnet-sdk.unwrapped}/share/dotnet";
+    DOTNET_CLI_TELEMETRY_OPTOUT = "true";
+    NPINS_DIRECTORY = "nix";
   };
 in
 {
