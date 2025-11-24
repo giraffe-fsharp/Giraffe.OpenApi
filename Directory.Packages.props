@@ -13,7 +13,7 @@
     <PackageVersion Include="Swashbuckle.AspNetCore.SwaggerGen" Version="9.0.6" />
     <!-- Sample App -->
     <PackageVersion Include="Swashbuckle.AspNetCore" Version="9.0.6" />
-    <PackageVersion Include="FSharp.SystemTextJson" Version="1.3.13" />
+    <PackageVersion Include="FSharp.SystemTextJson" Version="1.4.36" />
     <!-- Analyzers -->
     <PackageVersion Include="FSharp.Analyzers.Build" Version="0.4.0" />
     <PackageVersion Include="G-Research.FSharp.Analyzers" Version="0.18.0" />
