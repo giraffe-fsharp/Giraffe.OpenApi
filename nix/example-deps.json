@@ -83,5 +83,10 @@
     "pname": "Microsoft.SourceLink.GitHub",
     "version": "8.0.0",
     "hash": "sha256-hNTkpKdCLY5kIuOmznD1mY+pRdJ0PKu2HypyXog9vb0="
+  },
+  {
+    "pname": "Scalar.AspNetCore",
+    "version": "2.0.0",
+    "hash": "sha256-tJsQozFKsBmSlpjCnpXlpTCrTHUu3GOBuXonmmDw9AI="
   }
 ]

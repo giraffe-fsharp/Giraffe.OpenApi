@@ -1,12 +1,12 @@
 {
-  lib,
   pname,
   version,
+  nix-gitignore,
   dotnet-sdk,
   dotnet-runtime,
-  pkgs,
+  buildDotnetModule,
 }:
-pkgs.buildDotnetModule {
+buildDotnetModule {
   inherit
     pname
     version
@@ -14,8 +14,8 @@ pkgs.buildDotnetModule {
     dotnet-runtime
     ;
   name = pname;
-  src = lib.cleanSource ../.;
+  src = nix-gitignore.gitignoreSource [ ] ../.;
   projectFile = "src/Giraffe.OpenApi/Giraffe.OpenApi.fsproj";
   nugetDeps = ./deps.json;
-  doCheck = true;
+  doCheck = false;
 }

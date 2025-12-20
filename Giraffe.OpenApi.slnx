@@ -1,4 +1,4 @@
 <Solution>
-  <Project Path="sample-project/SampleApp.fsproj" />
+  <Project Path="example/SampleApp.fsproj" />
   <Project Path="src/Giraffe.OpenApi/Giraffe.OpenApi.fsproj" />
 </Solution>

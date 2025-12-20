@@ -2,17 +2,17 @@
   "version": 1,
   "isRoot": true,
   "tools": {
-    "fsharp-analyzers": {
-      "version": "0.34.1",
-      "commands": [
-        "fsharp-analyzers"
-      ],
-      "rollForward": false
-    },
     "fantomas": {
       "version": "7.0.5",
       "commands": [
         "fantomas"
+      ],
+      "rollForward": false
+    },
+    "fsharp-analyzers": {
+      "version": "0.34.1",
+      "commands": [
+        "fsharp-analyzers"
       ],
       "rollForward": false
     }

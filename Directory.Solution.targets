@@ -1,6 +1,6 @@
 <Project>
     <ItemGroup>
-        <ProjectsToAnalyze Include="src/Giraffe.OpenApi/Giraffe.OpenApi.fsproj" Exclude="sample-project/SampleApp.fsproj" />
+        <ProjectsToAnalyze Include="src/Giraffe.OpenApi/Giraffe.OpenApi.fsproj" Exclude="example/SampleApp.fsproj" />
     </ItemGroup>
 
     <Target Name="AnalyzeSolution">

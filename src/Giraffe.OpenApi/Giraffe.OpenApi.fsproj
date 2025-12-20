@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net9.0</TargetFramework>
+    <TargetFramework>net10.0</TargetFramework>
     <PackageId>Giraffe.OpenApi</PackageId>
     <Title>Giraffe.OpenApi</Title>
     <RootNamespace>Giraffe.OpenApi</RootNamespace>
@@ -19,8 +19,8 @@
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
-    <Version>0.0.3</Version>
-    <PackageVersion>0.0.3</PackageVersion>
+    <Version>0.1.0</Version>
+    <PackageVersion>0.1.0</PackageVersion>
     <PackageReleaseNotes>Initial Version</PackageReleaseNotes>
     <Copyright>Copyright © $([System.DateTime]::UtcNow.Year)</Copyright>
   </PropertyGroup>
@@ -28,8 +28,8 @@
   <ItemGroup>
     <None Include="../../giraffe-64.png" Pack="true" PackagePath="\" />
     <None Include="../../README.md" Pack="true" PackagePath="\" />
+    <Compile Include="Transformers.fs"/>
     <Compile Include="Configuration.fs"/>
-    <Compile Include="SchemaFilters.fs"/>
     <Compile Include="Routing.fs"/>
   </ItemGroup>
 
@@ -38,6 +38,5 @@
     <PackageReference Include="Giraffe" />
     <PackageReference Include="Microsoft.SourceLink.GitHub" PrivateAssets="All" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi"/>
-    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen"/>
   </ItemGroup>
 </Project>
