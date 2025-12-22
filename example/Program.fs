@@ -2,24 +2,32 @@ open System
 open System.IO
 open System.Text.Json
 open System.Text.Json.Serialization
+open System.Threading.Tasks
 open Microsoft.AspNetCore.Builder
 open Microsoft.AspNetCore.Http
 open Microsoft.Extensions.DependencyInjection
 open Microsoft.Extensions.Hosting
-open Microsoft.OpenApi.Models
 open Giraffe
 open Giraffe.EndpointRouting
 open Giraffe.OpenApi
+open Scalar.AspNetCore
+open System.ComponentModel.DataAnnotations
 
 /// <summary>
 /// Fsharp Message type
 /// </summary>
+[<CLIMutable>]
 type FsharpMessage = {
     /// <summary>
     /// Hello content
     /// </summary>
     /// <example>This is an Example</example>
+    [<JsonRequired>]
     Hello: string
+    /// <summary>
+    /// Age content
+    /// </summary>
+    Age: int option
 }
 
 /// <summary>
@@ -74,7 +82,8 @@ type MediaSetStatusInfo = {
     PriorityLevel: PriorityLevel
 }
 
-let handler1 (_: HttpFunc) (ctx: HttpContext) = ctx.WriteTextAsync "Hello World"
+let handler1 (next: HttpFunc) (ctx: HttpContext) =
+    json { Hello = "Hello from Giraffe"; Age = None } next ctx
 
 let handler2 (firstName: string, age: int) (_: HttpFunc) (ctx: HttpContext) =
     $"Hello %s{firstName}, you are %i{age} years old." |> ctx.WriteTextAsync
@@ -105,13 +114,19 @@ let mediaSetStatusHandler (next: HttpFunc) (ctx: HttpContext) =
     |]
     json statusInfo next ctx
 
-/// Redirects to the swagger interface from the root of the site.
-let swaggerRedirectHandler: HttpHandler = redirectTo true "swagger/index.html"
+let messagePostHandler (next: HttpFunc) (ctx: HttpContext) =
+    task {
+        let! message = ctx.BindJsonAsync<FsharpMessage>()
+        return! ctx.WriteTextAsync($"Message posted: %s{message.Hello}")
+    }
+
+/// Redirects to the scalar interface from the root of the site.
+let scalarRedirectHandler: HttpHandler = redirectTo true "/scalar/v1"
 
 let endpoints = [
-    route "/" swaggerRedirectHandler
+    route "/" scalarRedirectHandler
     GET [
-        route "/hello" (json { Hello = "Hello from Giraffe" })
+        route "/hello" handler1
         |> configureEndpoint _.WithTags("SampleApp")
         |> configureEndpoint _.WithSummary("Fetches a Hello from Giraffe")
         |> configureEndpoint _.WithDescription("Will return a Hello from Giraffe.")
@@ -139,18 +154,14 @@ let endpoints = [
         |> addOpenApiSimple<unit, MediaSetStatusInfo array>
     ]
     POST [
-        route "/message" (text "Message posted!")
+        route "/message" messagePostHandler
+        |> configureEndpoint _.WithTags("SampleApp")
         |> configureEndpoint _.WithSummary("Posts a message")
-        |> configureEndpoint _.WithDescription("Will return a message posted")
+        |> configureEndpoint _.WithDescription("Will return a message posted confirmation")
         |> addOpenApi (
             OpenApiConfig(
                 requestBody = RequestBody(typeof<FsharpMessage>),
-                responseBodies = [| ResponseBody(typeof<string>) |],
-                configureOperation =
-                    (fun o ->
-                        o.OperationId <- "PostMessage"
-                        o
-                    )
+                responseBodies = [| ResponseBody(typeof<string>) |]
             )
         )
     ]
@@ -159,22 +170,9 @@ let endpoints = [
 let notFoundHandler = "Not Found" |> text |> RequestErrors.notFound
 
 let configureApp (appBuilder: IApplicationBuilder) =
-    appBuilder
-        .UseRouting()
-        .UseSwagger() // For generating OpenApi spec
-        .UseSwaggerUI() // For viewing Swagger UI
-        .UseGiraffe(endpoints)
-        .UseGiraffe(notFoundHandler)
+    appBuilder.UseRouting().UseGiraffe(endpoints).UseGiraffe(notFoundHandler)
 
 let configureServices (services: IServiceCollection) =
-    let openApiInfo = OpenApiInfo() // Configure OpenApi
-    openApiInfo.Description <- "Documentation for my API"
-    openApiInfo.Title <- "My API"
-    openApiInfo.Version <- "v1"
-    openApiInfo.Contact <- OpenApiContact()
-    openApiInfo.Contact.Name <- "Joe Developer"
-    openApiInfo.Contact.Email <- "joe.developer@tempuri.org"
-
     // Configure JSON serialization options with F# support
     let fsOptions =
         JsonFSharpOptions
@@ -187,37 +185,63 @@ let configureServices (services: IServiceCollection) =
     let jsonOptions = JsonSerializerOptions()
     jsonOptions.PropertyNamingPolicy <- JsonNamingPolicy.CamelCase
     jsonOptions.Converters.Add(JsonStringEnumConverter(JsonNamingPolicy.CamelCase))
-
-    // Configure ASP.NET Core JSON options (for OpenAPI schema generation)
-    services.ConfigureHttpJsonOptions(fun (options: Microsoft.AspNetCore.Http.Json.JsonOptions) ->
-        options.SerializerOptions.PropertyNamingPolicy <- JsonNamingPolicy.CamelCase
-        options.SerializerOptions.Converters.Add(
-            JsonStringEnumConverter(JsonNamingPolicy.CamelCase)
-        )
-        let fsOpts =
-            JsonFSharpOptions
-                .Default()
-                .WithUnionAdjacentTag()
-                .WithUnionTagCaseInsensitive()
-                .WithUnionUnwrapFieldlessTags()
-                .WithUnionTagNamingPolicy(JsonNamingPolicy.CamelCase)
-        options.SerializerOptions.Converters.Add(JsonFSharpConverter(fsOpts))
-    )
-    |> ignore
+    jsonOptions.Converters.Add(JsonFSharpConverter(fsOptions))
 
     services
         .AddRouting()
         .AddSingleton<Json.ISerializer>(Json.FsharpFriendlySerializer(fsOptions, jsonOptions))
         .AddGiraffe()
-        .AddEndpointsApiExplorer() // Use the API Explorer to discover and describe endpoints
-        .AddSwaggerGen(fun opt ->
-            opt.SwaggerDoc("v1", openApiInfo)
-            let xmlPath = Path.Combine(AppContext.BaseDirectory, "SampleApp.xml")
-            opt.IncludeXmlComments(xmlPath)
-            opt.SupportNonNullableReferenceTypes()
-            // Register the discriminated union schema filter
-            opt.SchemaFilter<DiscriminatedUnionSchemaFilter>()
-        ) // Swagger dependencies
+        .AddOpenApi(
+            "v1",
+            fun (options: Microsoft.AspNetCore.OpenApi.OpenApiOptions) ->
+                // Configure OpenAPI document metadata
+                options.AddDocumentTransformer(fun
+                                                   (document: Microsoft.OpenApi.OpenApiDocument)
+                                                   (context:
+                                                       Microsoft.AspNetCore.OpenApi.OpenApiDocumentTransformerContext)
+                                                   (ct: System.Threading.CancellationToken) ->
+                    document.Info <-
+                        Microsoft.OpenApi.OpenApiInfo(
+                            Title = "Giraffe OpenAPI Sample API",
+                            Version = "v1.0.0",
+                            Description =
+                                "A sample API demonstrating Giraffe with OpenAPI and Scalar documentation",
+                            Contact =
+                                Microsoft.OpenApi.OpenApiContact(
+                                    Name = "API Support",
+                                    Email = "support@example.com",
+                                    Url = Uri("https://example.com/support")
+                                ),
+                            License =
+                                Microsoft.OpenApi.OpenApiLicense(
+                                    Name = "MIT",
+                                    Url = Uri("https://opensource.org/licenses/MIT")
+                                )
+                        )
+
+                    // Add server information
+                    document.Servers <-
+                        ResizeArray(
+                            [
+                                Microsoft.OpenApi.OpenApiServer(
+                                    Url = "http://localhost:5000",
+                                    Description = "Development server"
+                                )
+                                Microsoft.OpenApi.OpenApiServer(
+                                    Url = "https://api.example.com",
+                                    Description = "Production server"
+                                )
+                            ]
+                        )
+
+                    Task.CompletedTask
+                )
+                |> ignore
+
+                // Register F# option and discriminated union schema transformers
+                options.AddSchemaTransformer<FSharpOptionSchemaTransformer>() |> ignore
+                options.AddSchemaTransformer<DiscriminatedUnionSchemaTransformer>() |> ignore
+        ) // Add OpenAPI support with F# transformers
     |> ignore
 
 [<EntryPoint>]
@@ -230,7 +254,24 @@ let main args =
     if app.Environment.IsDevelopment() then
         app.UseDeveloperExceptionPage() |> ignore
 
+    // Map OpenAPI endpoint
+    app.MapOpenApi() |> ignore
+
     configureApp app
+
+    // Map Scalar API Reference UI
+    app.MapScalarApiReference(fun (options: Scalar.AspNetCore.ScalarOptions) ->
+        options.WithTitle("Giraffe OpenAPI Sample API") |> ignore
+        options.WithTheme(ScalarTheme.Purple) |> ignore
+        options.WithDefaultHttpClient(ScalarTarget.CSharp, ScalarClient.HttpClient)
+        |> ignore
+        options.WithDarkMode(true) |> ignore
+        options.WithSidebar(true) |> ignore
+        options.WithModels(true) |> ignore
+        options.WithSearchHotKey("k") |> ignore
+    )
+    |> ignore
+
     app.Run()
 
     0

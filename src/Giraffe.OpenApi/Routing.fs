@@ -25,30 +25,31 @@ namespace Giraffe.OpenApi
 // SOFTWARE.
 
 open System.Reflection
+open System.Threading.Tasks
 open FSharp.Reflection
+open Microsoft.OpenApi
 
 [<AutoOpen>]
 module Routing =
 
     open Microsoft.AspNetCore.Builder
-    open Microsoft.OpenApi.Models
     open Giraffe
     open Giraffe.EndpointRouting
 
     let private getSchema (c: char) (modifier: string option) =
         match c with
-        | 's' -> OpenApiSchema(Type = "string")
-        | 'i' -> OpenApiSchema(Type = "integer", Format = "int32")
-        | 'b' -> OpenApiSchema(Type = "boolean")
-        | 'c' -> OpenApiSchema(Type = "string")
-        | 'd' -> OpenApiSchema(Type = "integer", Format = "int64")
-        | 'f' -> OpenApiSchema(Type = "number", Format = "double")
-        | 'u' -> OpenApiSchema(Type = "integer", Format = "int64")
+        | 's' -> OpenApiSchema(Type = JsonSchemaType.String)
+        | 'i' -> OpenApiSchema(Type = JsonSchemaType.Integer, Format = "int32")
+        | 'b' -> OpenApiSchema(Type = JsonSchemaType.Boolean)
+        | 'c' -> OpenApiSchema(Type = JsonSchemaType.String)
+        | 'd' -> OpenApiSchema(Type = JsonSchemaType.Integer, Format = "int64")
+        | 'f' -> OpenApiSchema(Type = JsonSchemaType.Number, Format = "double")
+        | 'u' -> OpenApiSchema(Type = JsonSchemaType.Integer, Format = "int64")
         | 'O' ->
             match modifier with
-            | Some "guid" -> OpenApiSchema(Type = "string", Format = "uuid")
-            | _ -> OpenApiSchema(Type = "string")
-        | _ -> OpenApiSchema(Type = "string")
+            | Some "guid" -> OpenApiSchema(Type = JsonSchemaType.String, Format = "uuid")
+            | _ -> OpenApiSchema(Type = JsonSchemaType.String)
+        | _ -> OpenApiSchema(Type = JsonSchemaType.String)
 
     let routef (path: PrintfFormat<_, _, _, _, 'T>) (routeHandler: 'T -> HttpHandler) : Endpoint =
         let template, mappings = RouteTemplateBuilder.convertToRouteTemplate path
@@ -58,7 +59,7 @@ module Routing =
 
         let configureEndpoint =
             fun (endpoint: IEndpointConventionBuilder) ->
-                endpoint.WithOpenApi(fun (operation: OpenApiOperation) ->
+                endpoint.AddOpenApiOperationTransformer(fun operation context ct ->
                     operation.Parameters <-
                         ResizeArray(
                             mappings
@@ -70,9 +71,10 @@ module Routing =
                                     Style = ParameterStyle.Simple,
                                     Schema = getSchema format None
                                 )
+                                :> IOpenApiParameter
                             )
                         )
-                    operation
+                    Task.CompletedTask
                 )
 
         TemplateEndpoint(HttpVerb.NotSpecified, template, mappings, boxedHandler, configureEndpoint)
@@ -91,5 +93,5 @@ module Routing =
             _.WithMetadata(
                 typeof<FakeFunc<'Req, 'Res>>
                     .GetMethod(methodName, BindingFlags.Instance ||| BindingFlags.NonPublic)
+                |> nullArgCheck $"Method {methodName} not found"
             )
-                .WithOpenApi()

@@ -1,5 +1,17 @@
 Notable changes are recorded here.
 
+# Giraffe.OpenApi 0.1.0
+
+## Breaking Changes
+
+- Upgrade to .NET 10.0
+- Update Microsoft.AspNetCore.OpenApi from 8.0.20 to 10.0.0 (not backwards compatible)
+
+## Updates
+
+- Update Giraffe from 8.0.0-alpha-003 to 8.2.0
+- Update FSharp.SystemTextJson from 1.3.13 to 1.4.36
+
 # Giraffe.OpenApi 0.0.3
 
 ## Updates

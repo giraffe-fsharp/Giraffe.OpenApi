@@ -27,13 +27,18 @@ namespace Giraffe.OpenApi
 open System
 open System.Reflection
 open System.Runtime.CompilerServices
+open System.Threading
+open System.Threading.Tasks
 open Microsoft.AspNetCore.Builder
 open Microsoft.AspNetCore.Http
 open Microsoft.AspNetCore.Http.Metadata
-open Microsoft.OpenApi.Models
+open Microsoft.AspNetCore.OpenApi
+open Microsoft.OpenApi
 
 [<AutoOpen>]
 module Configuration =
+
+    let internal nullArgCheck msg value = if isNull value then invalidArg "value" msg else value
 
     // This is a hack to prevent generating Func tag in open API
     [<CompilerGenerated>]
@@ -46,17 +51,18 @@ module Configuration =
     let internal fakeFuncMethod =
         typeof<FakeFunc<_, _>>
             .GetMethod("InvokeUnit", BindingFlags.Instance ||| BindingFlags.NonPublic)
+        |> nullArgCheck $"Method InvokeUnit not found"
     let internal unitType = typeof<unit>
 
     type RequestBody(?requestType: Type, ?contentTypes: string array, ?isOptional: bool) =
-        let requestType = requestType |> Option.defaultValue null
+        let requestType = requestType |> Option.toObj
         let contentTypes = contentTypes |> Option.defaultValue [| "application/json" |]
         let isOptional = isOptional |> Option.defaultValue false
         member this.ToAttribute () = AcceptsMetadata(contentTypes, requestType, isOptional)
 
     type ResponseBody(?responseType: Type, ?contentTypes: string array, ?statusCode: int) =
-        let responseType = responseType |> Option.defaultValue null
-        let contentTypes = contentTypes |> Option.defaultValue null
+        let responseType = responseType |> Option.toObj
+        let contentTypes = contentTypes |> Option.toObj
         let statusCode = statusCode |> Option.defaultValue 200
         member this.ToAttribute () =
             ProducesResponseTypeMetadata(statusCode, responseType, contentTypes)
@@ -65,7 +71,8 @@ module Configuration =
         (
             ?requestBody: RequestBody,
             ?responseBodies: ResponseBody seq,
-            ?configureOperation: OpenApiOperation -> OpenApiOperation
+            ?configureOperation:
+                OpenApiOperation -> OpenApiOperationTransformerContext -> CancellationToken -> Task
         )
         =
 
@@ -79,5 +86,5 @@ module Configuration =
                     builder.WithMetadata(produces.ToAttribute()) |> ignore
             )
             match configureOperation with
-            | Some configure -> builder.WithOpenApi(configure)
-            | None -> builder.WithOpenApi()
+            | Some configure -> builder.AddOpenApiOperationTransformer(configure)
+            | None -> builder

@@ -7,7 +7,7 @@ An extension for the [Giraffe](https://github.com/giraffe-fsharp/Giraffe) Web Ap
 [![NuGet Info](https://buildstats.info/nuget/Giraffe.OpenApi?includePreReleases=true)](https://www.nuget.org/packages/Giraffe.OpenApi/)
 
 
-## Table of Contents 
+## Table of Contents
 
 - [Giraffe.OpenApi](#giraffeopenapi)
   - [Table of Contents](#table-of-contents)
@@ -70,14 +70,12 @@ let endpoints = [
 
 ### Integration
 
-Since `Giraffe.OpenApi` works on top of `Microsoft.AspNetCore.OpenApi` and `Swashbuckle.AspNetCore` packages, you need to do [standard steps](https://learn.microsoft.com/en-us/aspnet/core/fundamentals/minimal-apis/openapi):
+Since `Giraffe.OpenApi` works on top of `Microsoft.AspNetCore.OpenApi` and `Scalar.AspNetCore` packages, you need to do [standard steps](https://learn.microsoft.com/en-us/aspnet/core/fundamentals/minimal-apis/openapi):
 
 ```fsharp
 let configureApp (appBuilder: IApplicationBuilder) =
     appBuilder
         .UseRouting()
-        .UseSwagger() // For generating OpenApi spec
-        .UseSwaggerUI() // For viewing Swagger UI
         .UseGiraffe(endpoints)
         .UseGiraffe(notFoundHandler)
 
@@ -85,12 +83,33 @@ let configureServices (services: IServiceCollection) =
     services
         .AddRouting()
         .AddGiraffe()
-        .AddEndpointsApiExplorer() // Use the API Explorer to discover and describe endpoints
-        .AddSwaggerGen() // Swagger dependencies
+        .AddOpenApi("v1", fun options ->
+            // Register F# transformers
+            options.AddSchemaTransformer<FSharpOptionSchemaTransformer>() |> ignore
+            options.AddSchemaTransformer<DiscriminatedUnionSchemaTransformer>() |> ignore
+        )
     |> ignore
+
+[<EntryPoint>]
+let main args =
+    let builder = WebApplication.CreateBuilder(args)
+    configureServices builder.Services
+
+    let app = builder.Build()
+
+    // Map OpenAPI endpoint
+    app.MapOpenApi() |> ignore
+
+    configureApp app
+
+    // Map Scalar API reference
+    app.MapScalarApiReference() |> ignore
+
+    app.Run()
+    0
 ```
 
-To make endpoints discoverable by Swagger, you need to call one of the following functions: `addOpenApi` or `addOpenApiSimple` on the endpoint.
+To make endpoints discoverable by Scalar, you need to call one of the following functions: `addOpenApi` or `addOpenApiSimple` on the endpoint.
 
 _NOTE: you don't have to describe routing parameters when using those functions, they will be inferred from the route template automatically._
 
@@ -101,13 +120,13 @@ This method is used to add OpenApi metadata to the endpoint. It accepts `OpenApi
 ```fsharp
 type OpenApiConfig (?requestBody : RequestBody,
                     ?responseBodies : ResponseBody seq,
-                    ?configureOperation : OpenApiOperation -> OpenApiOperation) =
+                    ?configureOperation : OpenApiOperation -> OpenApiOperationTransformerContext -> CancellationToken -> Task) =
     // ...
 ```
 
 Response body schema will be inferred from the types passed to `requestBody` and `responseBodies` parameters. Each `ResponseBody` object in sequence must have different status code.
 
-`configureOperation` parameter is a function that allows you to do very low-level modifications the `OpenApiOperation` object.
+`configureOperation` parameter is a function that allows you to do very low-level modifications the `OpenApiOperation` object using the new transformer pattern.
 
 ### addOpenApiSimple
 
@@ -122,7 +141,7 @@ let addOpenApiSimple<'Req, 'Res> = ...
 - **Request Type (`'Req`)**:
     - If `'Req` is `unit`, the endpoint is treated as not requiring a request body (e.g., for GET endpoints).
     - If `'Req` is a tuple or a primitive type (e.g., `int`, `string`), the endpoint is treated as not requiring a request body. These are typically used for path or query parameters, and the parameters are inferred from the route template.
-    - If `'Req` is a any other complex type (e.g., record or class types), the endpoint is treated as requiring a request body. The schema is inferred from the type's fields.
+    - If `'Req` is any other complex type (e.g., record, or class types), the endpoint is treated as requiring a request body. The schema is inferred from the type's fields.
 - **Response Type (`'Res`)**:
     - The response schema is always inferred from the type provided as `'Res`.
     - If `'Res` is `unit`, the endpoint is treated as not returning a response body.

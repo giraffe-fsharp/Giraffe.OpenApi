@@ -38,4 +38,3 @@ fsharp_space_before_member = true
 fsharp_space_before_parameter = true
 fsharp_space_before_uppercase_invocation = false
 max_line_length = 100
-

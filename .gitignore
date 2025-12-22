@@ -5,6 +5,7 @@
 .ionide
 .idea
 *.user
+.env
 .vscode
 .direnv
 .DS_Store
