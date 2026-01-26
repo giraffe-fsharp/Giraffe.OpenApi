@@ -11,7 +11,7 @@
     <PackageVersion Include="Microsoft.SourceLink.GitHub" Version="8.0.0" />
     <PackageVersion Include="Microsoft.AspNetCore.OpenApi" Version="10.0.2" />
     <!-- Sample App -->
-    <PackageVersion Include="Scalar.AspNetCore" Version="2.12.4" />
+    <PackageVersion Include="Scalar.AspNetCore" Version="2.12.18" />
     <PackageVersion Include="FSharp.SystemTextJson" Version="1.4.36" />
     <!-- Analyzers -->
     <PackageVersion Include="FSharp.Analyzers.Build" Version="0.5.0" />
