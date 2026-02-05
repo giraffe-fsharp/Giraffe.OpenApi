@@ -19,9 +19,9 @@
       },
       "G-Research.FSharp.Analyzers": {
         "type": "Direct",
-        "requested": "[0.20.0, )",
-        "resolved": "0.20.0",
-        "contentHash": "BgITRarNHqWRPVhDOtbXWIOhdAoAgFmlajiTXQeNy5XA2MZpGPhQMS4Pl+UZac+9AEA5be0uTL+/H5DylrAXfA=="
+        "requested": "[0.21.0, )",
+        "resolved": "0.21.0",
+        "contentHash": "lPFSgSMDBOssGP2o7qWaZpFEmMVRz3USeckt6PjCiqd+AeX4YU/NN3pl/luwbD5vEATbkgc3o8CYJRaE5P3xJA=="
       },
       "Giraffe": {
         "type": "Direct",
