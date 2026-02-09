@@ -43,9 +43,9 @@
       },
       "Scalar.AspNetCore": {
         "type": "Direct",
-        "requested": "[2.12.30, )",
-        "resolved": "2.12.30",
-        "contentHash": "tG+i8CN7Ub26z1GkjK0Zo4aDa9Omh5I5xQGDYN1O23DByMxH8jXz0Qd9/yHYczqi6+bDXgpSAYDfn1VkbupqCw=="
+        "requested": "[2.12.36, )",
+        "resolved": "2.12.36",
+        "contentHash": "jpsDpEs0pN3/AgcaTX8AnRAZy97bLjChToe8wSrNrRoP8nrQu6GgvOLO2X66620Y3Ui63tBkB729yDJKnWvi6A=="
       },
       "Giraffe.ViewEngine": {
         "type": "Transitive",
