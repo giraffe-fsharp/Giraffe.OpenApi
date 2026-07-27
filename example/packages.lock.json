@@ -43,9 +43,9 @@
       },
       "Scalar.AspNetCore": {
         "type": "Direct",
-        "requested": "[2.16.6, )",
-        "resolved": "2.16.6",
-        "contentHash": "rT7Pdk9wA25xfJJM5cCCTl4HXPsJd6/WcO5UfmB1iCjNl/zKy+ZftsW8rosERio1uJe3VlVJ4SfAaA8w3QmV4w=="
+        "requested": "[2.16.16, )",
+        "resolved": "2.16.16",
+        "contentHash": "Ax0e0bIh+Upf92k1+pTBUom3e/kbpu20qsrDYmmS1NM721Eq2xF8c789x6IbiNrvW8WwySRzPv/icYYhb6idSg=="
       },
       "Giraffe.ViewEngine": {
         "type": "Transitive",
@@ -70,7 +70,7 @@
         "dependencies": {
           "FSharp.SystemTextJson": "[1.4.36, )",
           "Giraffe": "[8.2.0, )",
-          "Microsoft.AspNetCore.OpenApi": "[10.0.8, )"
+          "Microsoft.AspNetCore.OpenApi": "[10.0.10, )"
         }
       },
       "FSharp.Core": {
@@ -81,9 +81,9 @@
       },
       "Microsoft.AspNetCore.OpenApi": {
         "type": "CentralTransitive",
-        "requested": "[10.0.8, )",
-        "resolved": "10.0.8",
-        "contentHash": "cw24xHE2QaWwyEG9GQwFbjboyabub6Vd80DIItUGENzcQOa/BEnTrXsg2GADqWTmY/3ycqk9ToLGjgvF/VRlGA==",
+        "requested": "[10.0.10, )",
+        "resolved": "10.0.10",
+        "contentHash": "d4Atx9IHq7JgX0F/h7Db+m9zAUzC+cKdI9k+OWnnyQIOUQtfvjIEuhvbjPigVMkAmPUgCbJ8Yp6M9ghUqHtJSQ==",
         "dependencies": {
           "Microsoft.OpenApi": "2.0.0"
         }
