@@ -25,9 +25,9 @@
       },
       "Giraffe": {
         "type": "Direct",
-        "requested": "[8.2.0, )",
-        "resolved": "8.2.0",
-        "contentHash": "GlrgfkGKnKbbLfPBpXVBXBEca0wwz+iI9Ba74j3Hcx/rMXLFLqs0WjDhNVfsU7FB585e3VxEcb12XoyOFrsklA==",
+        "requested": "[8.3.0, )",
+        "resolved": "8.3.0",
+        "contentHash": "/ljc4Ob4QyaEFajqHukMBVfmB+/HTpyzRyucPU1CmoYt874oz6YIXeAyJEP5Z3ikX/XnkVhxaCAVQ+u7x+sjzQ==",
         "dependencies": {
           "FSharp.Core": "6.0.0",
           "FSharp.SystemTextJson": "1.3.13",
