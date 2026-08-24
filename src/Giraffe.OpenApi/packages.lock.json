@@ -37,9 +37,9 @@
       },
       "Ionide.Analyzers": {
         "type": "Direct",
-        "requested": "[0.16.0, )",
-        "resolved": "0.16.0",
-        "contentHash": "7yy9T/ffTaX6GJpfrItTWA/ogwpAt4/SKG58+mExZhkLi4xqLPjPKbPbuluEGcyknWGpjwPIC/ftLT+HU5mFMw=="
+        "requested": "[0.17.0, )",
+        "resolved": "0.17.0",
+        "contentHash": "vTlenH0GbY+MGQHa26EeFaNIf4AfmVa9Jha2DJCTJxFZlYcr11Phi1ngq/Rabpn3Xii/Ri0ZWFqMjI90KgQEMQ=="
       },
       "Microsoft.AspNetCore.OpenApi": {
         "type": "Direct",
