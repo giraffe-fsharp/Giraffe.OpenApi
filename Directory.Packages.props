@@ -9,7 +9,7 @@
     <PackageVersion Include="FSharp.Core" Version="10.0.100" />
     <!-- Giraffe.OpenApi -->
     <PackageVersion Include="Microsoft.SourceLink.GitHub" Version="10.0.402" />
-    <PackageVersion Include="Microsoft.AspNetCore.OpenApi" Version="10.0.12" />
+    <PackageVersion Include="Microsoft.AspNetCore.OpenApi" Version="10.0.14" />
     <!-- Sample App -->
     <PackageVersion Include="Scalar.AspNetCore" Version="2.17.2" />
     <PackageVersion Include="FSharp.SystemTextJson" Version="1.4.36" />
