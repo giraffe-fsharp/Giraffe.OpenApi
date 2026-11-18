@@ -29,6 +29,8 @@ Inspired by the [Oxpecker.OpenApi](https://github.com/Lanayx/Oxpecker/blob/devel
 
 ## Getting Started
 
+The library and sample use Giraffe `8.3.0`.
+
 Add the `Giraffe.OpenApi` NuGet package to your project:
 
 ```bash
