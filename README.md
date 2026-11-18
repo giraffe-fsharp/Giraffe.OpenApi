@@ -21,6 +21,21 @@ An extension for the [Giraffe](https://github.com/giraffe-fsharp/Giraffe) Web Ap
     - [configureEndpoint](#configureendpoint)
   - [License](#license)
 
+## Publishing
+
+GitHub releases publish through [publish.yml](.github/workflows/publish.yml)
+using GitHub OIDC and `NuGet/login` as the personal NuGet account `dsyme`.
+Package permissions are provided by the `fsprojects` NuGet organization.
+
+Before publishing, configure a [NuGet trusted publishing policy](https://www.nuget.org/account/trustedpublishing)
+with package owner `fsprojects`, GitHub repository owner `giraffe-fsharp`,
+repository `Giraffe.OpenApi`, workflow filename `publish.yml`, no environment,
+and scope to push new versions of the existing package `Giraffe.OpenApi`.
+Keep `dsyme` an active member of the NuGet organization.
+
+After a successful trusted-publishing release, remove the obsolete GitHub
+`NUGET_KEY` secret and revoke its NuGet API key if it is not used elsewhere.
+
 ## About
 
 `Giraffe.OpenApi` is a library that extends the `Giraffe` Web Application framework with functionality to auto generate OpenApi documentation spec from code. This means that you can define your API endpoints using Giraffe and generate OpenApi or Swagger documentation from it.
